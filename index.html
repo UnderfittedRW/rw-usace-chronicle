@@ -1349,7 +1349,7 @@
       const contentHeight = container.scrollHeight;
       const viewportHeight = window.innerHeight;
       // Roughly 100 px per second — slow, cinematic
-      const totalDistance = contentHeight + viewportHeight * 2;
+      const totalDistance = contentHeight + viewportHeight * 1.5;
       const duration = Math.max(40, Math.min(480, totalDistance / 30));
       overlay.style.setProperty('--crawl-duration', duration + 's');
 
@@ -1362,7 +1362,7 @@
       container.addEventListener('animationend', () => {
         setTimeout(() => {
           justiceScreen.classList.add('visible');
-        }, 1800);
+        }, 1500);
       }, { once: true });
     });
 
