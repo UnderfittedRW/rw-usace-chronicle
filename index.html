@@ -1138,7 +1138,7 @@
     <div class="credits-form">
       <div>
         <label for="cast-input">The Players, Listed (Coming Soon)</label>
-        <textarea id="cast-input" placeholder="Paste or type the cast here. One entry per line. Examples:&#10;&#10;— THE LORDS OF DETROIT —&#10;Jane Doe — District Commander&#10;John Smith — Chief of Programs&#10;&#10;— THE SCHEMERS —&#10;...&#10;&#10;— THE WESTERN COURT —&#10;...&#10;&#10;You can use lines starting with — to mark sections."></textarea>
+        <textarea id="cast-input" placeholder="Paste or type the cast here. One entry per line. Examples:&#10;&#10;— THE LORDS OF DETROIT —&#10;...&#10;&#10;— THE PRIMARY SCHEMERS —&#10;...&#10;&#10;— THE WESTERN COURT —&#10;...&#10;&#10;"></textarea>
       </div>
 
       <p class="audio-hint">♪ Should the bards be present, the music shall find its own way in.</p>
@@ -1350,7 +1350,7 @@
       const viewportHeight = window.innerHeight;
       // Roughly 100 px per second — slow, cinematic
       const totalDistance = contentHeight + viewportHeight * 1.5;
-      const duration = Math.max(40, Math.min(360, totalDistance / 30));
+      const duration = Math.max(40, Math.min(480, totalDistance / 30));
       overlay.style.setProperty('--crawl-duration', duration + 's');
 
       // Restart animation
