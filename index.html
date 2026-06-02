@@ -8,13 +8,13 @@
 <meta name="author" content="Royce Williams">
 <meta name="keywords" content="Royce Williams, USACE, US Army Corps of Engineers, federal employee misconduct, institutional retaliation, Detroit District, wrongful attrition">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://UnderfittedRW.github.io/royce-williams-usace-chronicle/">
+<link rel="canonical" href="https://UnderfittedRW.github.io/rw-usace-chronicle/">
 
 <!-- Open Graph -->
 <meta property="og:title" content="The Chronicle of a Scribe Cast Adrift — A Tale of House USACE">
 <meta property="og:description" content="A true account of institutional misconduct within the US Army Corps of Engineers. The ledgers remember.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://UnderfittedRW.github.io/royce-williams-usace-chronicle/">
+<meta property="og:url" content="https://UnderfittedRW.github.io/rw-usace-chronicle/">
 
 <!-- Structured data -->
 <script type="application/ld+json">
@@ -690,6 +690,32 @@
     text-indent: 1em;
   }
 
+  .crawl-content .memorial-sub {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--parchment-dim);
+    line-height: 1.9;
+    margin-top: 2rem;
+  }
+
+  .crawl-content .memorial-sub em {
+    color: var(--gold-bright);
+    font-style: italic;
+  }
+
+  .crawl-content .memorial-fine-print {
+    display: block;
+    margin-top: 1.6rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    opacity: 0.85;
+    line-height: 2;
+  }
+
   .crawl-content .memorial-label {
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
@@ -780,6 +806,24 @@
     animation: candleFlicker 5s ease-in-out infinite;
   }
 
+  .crawl-content .crawl-jbq-sigil {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 1.5rem;
+    filter: drop-shadow(0 0 20px rgba(201, 169, 97, 0.4));
+    animation: jbqFloat 6s ease-in-out infinite;
+  }
+
+  .crawl-content .special-thanks-motto {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    font-size: 0.68rem;
+    color: var(--gold-deep);
+    margin-top: 1rem;
+    text-indent: 0.35em;
+  }
+
   .crawl-close {
     position: fixed;
     top: 1.5rem;
@@ -817,16 +861,245 @@
     border: 0;
   }
 
-  /* Responsive */
+  /* ========== RESPONSIVE — MOBILE ========== */
+
+  /* Prevent any element from overflowing the viewport horizontally */
+  html, body { overflow-x: hidden; }
+  * { max-width: 100%; }
+  img, svg { height: auto; }
+
   @media (max-width: 640px) {
-    body { font-size: 17px; }
-    .act { padding: 5rem 1.5rem; min-height: auto; }
-    .act p { font-size: 1.1rem; }
-    .hero { padding: 3rem 1.5rem; }
-    .hero-sigil { width: 130px; height: 130px; }
-    .credits-panel { padding: 4rem 1.5rem; }
-    .play-button { padding: 1.2rem 2.5rem; font-size: 0.95rem; letter-spacing: 0.3em; }
+    body { font-size: 16px; }
+
+    /* Hero */
+    .hero { padding: 3rem 1.2rem; }
+    .hero-sigil { width: 110px; height: 110px; }
+    .hero-eyebrow { letter-spacing: 0.3em; font-size: 0.68rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-house { letter-spacing: 0.2em; font-size: 0.75rem; }
+
+    /* Acts */
+    .act { padding: 4rem 1.2rem; min-height: auto; }
+    .act-inner { width: 100%; padding: 0; }
+    .act p { font-size: 1.05rem; line-height: 1.75; }
+    .act-label { letter-spacing: 0.25em; font-size: 0.68rem; }
+    .act-year { font-size: 0.85rem; letter-spacing: 0.08em; }
+
+    /* Tame the drop-cap so it doesn't push text off-screen */
+    .act p:first-of-type::first-letter {
+      font-size: 3.2rem;
+      padding: 0.3rem 0.5rem 0 0;
+    }
+
+    /* Credits panel */
+    .credits-panel { padding: 3.5rem 1.2rem; }
+    .play-button { padding: 1.1rem 2rem; font-size: 0.9rem; letter-spacing: 0.2em; width: 100%; }
+
+    /* Evidence panel */
+    .evidence-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .evidence-item { padding: 1.4rem 1rem; }
+    .remedy-item { font-size: 0.65rem; letter-spacing: 0.1em; padding: 0.7rem 0.8rem; flex-wrap: wrap; }
+
+    /* Epilogue */
+    .epilogue { padding: 5rem 1.2rem 3rem; }
+    .epilogue p { font-size: 1.05rem; }
+
+    /* Justice screen */
+    .justice-screen { padding: 2rem 1.2rem; }
+    .justice-title { font-size: 2rem; }
+    .justice-line { font-size: 0.95rem; }
+
+    /* Crawl overlay */
+    .crawl-content { width: 94%; }
+    .crawl-content h3.crawl-title { font-size: 1.6rem; }
+    .crawl-content .crawl-name { font-size: 1.2rem; }
+    .crawl-content .memorial-name { font-size: 1.5rem; }
+    .crawl-content .special-thanks-name { font-size: 1.2rem; }
+
+    /* Divider lines shrink on small screens */
+    .divider .line { flex: 0 1 60px; }
   }
+
+  /* Slightly larger phones / landscape */
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2rem; }
+    .act h2 { font-size: 1.7rem; }
+    .act-year { word-break: break-word; }
+  }
+  /* ---------- SCROLL PROGRESS BAR ---------- */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--blood), var(--gold), var(--gold-bright));
+    z-index: 999;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* ---------- STICKY TIMELINE NAV ---------- */
+  .timeline-nav {
+    position: fixed;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 50;
+    opacity: 0;
+    animation: emerge 1.5s ease-out 3s forwards;
+  }
+
+  .timeline-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-deep);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .timeline-dot::before {
+    content: attr(data-label);
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    background: rgba(10, 7, 6, 0.85);
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--gold-deep);
+  }
+
+  .timeline-dot:hover::before { opacity: 1; }
+
+  .timeline-dot.active,
+  .timeline-dot:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 8px rgba(201, 169, 97, 0.6);
+  }
+
+  @media (max-width: 768px) { .timeline-nav { display: none; } }
+
+  /* ---------- EVIDENCE PANEL ---------- */
+  .evidence-panel {
+    background: linear-gradient(to bottom, rgba(10,7,6,0) 0%, rgba(20,16,12,0.5) 100%);
+    padding: 8rem 2rem;
+  }
+
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0 4rem;
+  }
+
+  .evidence-item {
+    border: 1px solid var(--gold-deep);
+    padding: 2rem;
+    background: rgba(20, 16, 12, 0.4);
+    position: relative;
+    transition: border-color 0.4s, box-shadow 0.4s;
+  }
+
+  .evidence-item::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold-deep), transparent);
+    transition: background 0.4s;
+  }
+
+  .evidence-item:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 30px rgba(201, 169, 97, 0.08);
+  }
+
+  .evidence-item:hover::before {
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .evidence-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.85;
+  }
+
+  .evidence-title {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .evidence-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--parchment-dim);
+  }
+
+  .evidence-cta {
+    border-top: 1px solid var(--gold-deep);
+    padding-top: 3rem;
+    margin-top: 1rem;
+  }
+
+  .remedy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .remedy-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--parchment-dim);
+    padding: 0.8rem 1.2rem;
+    border: 1px solid rgba(122, 98, 48, 0.3);
+    background: rgba(20, 16, 12, 0.3);
+    transition: all 0.3s;
+  }
+
+  .remedy-item:hover {
+    color: var(--parchment);
+    border-color: var(--gold-deep);
+    background: rgba(20, 16, 12, 0.6);
+  }
+
+  .remedy-bullet {
+    color: var(--blood-bright);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  /* Responsive evidence grid */
+  @media (max-width: 640px) {
+    .evidence-grid { grid-template-columns: 1fr; }
+    .remedy-item { font-size: 0.68rem; letter-spacing: 0.15em; }
+  }
+
   /* ---------- JUSTICE SCREEN ---------- */
   .justice-screen {
     position: absolute;
@@ -923,6 +1196,23 @@
 <body>
 
 <canvas id="ember-canvas"></canvas>
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<!-- Timeline Nav Dots -->
+<nav class="timeline-nav" aria-label="Chronicle navigation">
+  <div class="timeline-dot active" data-label="The Chronicle" data-target="hero"></div>
+  <div class="timeline-dot" data-label="Act I · Mountain Hall" data-target="act1"></div>
+  <div class="timeline-dot" data-label="Act II · The Breaking" data-target="act2"></div>
+  <div class="timeline-dot" data-label="Act III · Northern Crossing" data-target="act3"></div>
+  <div class="timeline-dot" data-label="Act IV · The Numbers" data-target="act4"></div>
+  <div class="timeline-dot" data-label="Act V · The Threat" data-target="act5"></div>
+  <div class="timeline-dot" data-label="Act VI · False Quest" data-target="act6"></div>
+  <div class="timeline-dot" data-label="Act VII · Western Court" data-target="act7"></div>
+  <div class="timeline-dot" data-label="Act VIII · Betrayal" data-target="act8"></div>
+  <div class="timeline-dot" data-label="Epilogue" data-target="epilogue"></div>
+  <!--<div class="timeline-dot" data-label="The Evidence" data-target="evidence"></div>-->
+  <div class="timeline-dot" data-label="Roll Credits" data-target="credits"></div>
+</nav>
 
 <!-- Hidden from view; readable by search engines -->
 <span class="sr-only">Written by Royce Williams, former employee of the US Army Corps of Engineers (USACE), documenting institutional misconduct across the Huntington, Southwestern, and Detroit Districts from 2022 to 2026.</span>
@@ -930,7 +1220,8 @@
 <main>
 
   <!-- ============== HERO ============== -->
-  <section class="hero">
+  <section class="hero" id="hero">
+    <!-- Hero Sigil: Crossed quill & sword -->
     <svg class="hero-sigil" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <radialGradient id="sigilGlow" cx="50%" cy="50%" r="50%">
@@ -941,18 +1232,14 @@
       <circle cx="50" cy="50" r="48" fill="url(#sigilGlow)"/>
       <circle cx="50" cy="50" r="42" fill="none" stroke="#c9a961" stroke-width="0.6"/>
       <circle cx="50" cy="50" r="38" fill="none" stroke="#c9a961" stroke-width="0.4" stroke-dasharray="2 3"/>
-      <!-- Crossed quill and sword -->
       <g stroke="#c9a961" stroke-width="1.2" fill="none" stroke-linecap="round">
-        <!-- sword -->
         <line x1="30" y1="30" x2="70" y2="70"/>
         <line x1="26" y1="34" x2="34" y2="26"/>
         <circle cx="72" cy="72" r="2" fill="#c9a961"/>
-        <!-- quill -->
         <path d="M 70 30 Q 60 35, 55 45 Q 50 55, 40 60 L 30 70" stroke-width="1.4"/>
         <path d="M 68 32 Q 62 36, 58 42" stroke-width="0.6"/>
         <path d="M 65 35 Q 60 39, 55 44" stroke-width="0.6"/>
       </g>
-      <!-- Stars at compass points -->
       <g fill="#c9a961">
         <circle cx="50" cy="8" r="1.2"/>
         <circle cx="92" cy="50" r="1.2"/>
@@ -970,7 +1257,7 @@
   </section>
 
   <!-- ============== ACT I ============== -->
-  <section class="act" data-act>
+  <section class="act" data-act id="act1">
     <div class="act-inner">
       <span class="act-label">Act the First</span>
       <h2>The Mountain Hall</h2>
@@ -996,7 +1283,7 @@
   </div>
 
   <!-- ============== ACT II ============== -->
-  <section class="act" data-act>
+  <section class="act" data-act id="act2">
     <div class="act-inner">
       <span class="act-label">Act the Second</span>
       <h2>The Breaking</h2>
@@ -1020,7 +1307,7 @@
   </div>
 
   <!-- ============== ACT III ============== -->
-  <section class="act" data-act>
+  <section class="act" data-act id="act3">
     <div class="act-inner">
       <span class="act-label">Act the Third</span>
       <h2>The Northern Crossing</h2>
@@ -1044,7 +1331,7 @@
   </div>
 
   <!-- ============== ACT IV ============== -->
-  <section class="act" data-act>
+  <section class="act" data-act id="act4">
     <div class="act-inner">
       <span class="act-label">Act the Fourth</span>
       <h2>The Numbers That Spoke Truth</h2>
@@ -1068,7 +1355,7 @@
   </div>
 
   <!-- ============== ACT V ============== -->
-  <section class="act" data-act>
+  <section class="act" data-act id="act5">
     <div class="act-inner">
       <span class="act-label">Act the Fifth</span>
       <h2>A Threat Wearing a Quill</h2>
@@ -1093,7 +1380,7 @@
   </div>
 
   <!-- ============== ACT VI ============== -->
-  <section class="act" data-act>
+  <section class="act" data-act id="act6">
     <div class="act-inner">
       <span class="act-label">Act the Sixth</span>
       <h2>The False Quest</h2>
@@ -1118,7 +1405,7 @@
   </div>
 
   <!-- ============== ACT VII ============== -->
-  <section class="act" data-act>
+  <section class="act" data-act id="act7">
     <div class="act-inner">
       <span class="act-label">Act the Seventh</span>
       <h2>The Western Court</h2>
@@ -1144,7 +1431,7 @@
   </div>
 
   <!-- ============== ACT VIII ============== -->
-  <section class="act" data-act>
+  <section class="act" data-act id="act8">
     <div class="act-inner">
       <span class="act-label">Act the Eighth · The Final Betrayal</span>
       <h2>The Homecoming Trial</h2>
@@ -1157,7 +1444,7 @@
   </section>
 
   <!-- ============== EPILOGUE ============== -->
-  <section class="act epilogue" data-act>
+  <section class="act epilogue" data-act id="epilogue">
     <div class="act-inner">
       <span class="act-label">— Epilogue —</span>
       <h2>The Quill, Laid Down</h2>
@@ -1166,13 +1453,13 @@
       <p>The realm shall do what realms always do: it shall forget. But the ledgers — the ledgers shall remember. <em>For they cannot lie.</em></p>
 
       <div class="signature-block">
-        <div class="seal">⚜ Thus Endeth the Chronicle ⚜</div>
+        <div class="seal">⚜ Thus Endeth the Chronicle ⚜ </div>
       </div>
     </div>
   </section>
 
   <!-- ============== CREDITS PANEL ============== -->
-  <section class="credits-panel">
+  <section class="credits-panel" id="credits">
     <h2>Name the Cast</h2>
     <p class="lede">Every kingdom has its players. Inscribe them below — heroes, villains, schemers, and ghosts alike. When you are ready, let the credits roll across the heavens.</p>
 
@@ -1202,7 +1489,7 @@
   <div class="justice-screen" id="justice-screen">
     <div class="justice-inner">
       <div class="justice-sigil">⚔</div>
-      <h2 class="justice-title">Justice for Royce</h2>
+      <h2 class="justice-title">Justice Will Be Served</h2>
       <div class="justice-rule"></div>
 
       <p class="justice-line">The maesters of House USACE were gifted a scribe of uncommon loyalty.<br>They repaid him with banishment.</p>
@@ -1277,7 +1564,57 @@
     tick();
   })();
 
-  // ---------- Scroll reveals ----------
+  // ---------- Scroll progress bar ----------
+  const progressBar = document.getElementById('scroll-progress');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  // ---------- Timeline nav ----------
+  const timelineDots = document.querySelectorAll('.timeline-dot');
+  const sectionTargets = {
+    hero: document.getElementById('hero'),
+    act1: document.getElementById('act1'),
+    act2: document.getElementById('act2'),
+    act3: document.getElementById('act3'),
+    act4: document.getElementById('act4'),
+    act5: document.getElementById('act5'),
+    act6: document.getElementById('act6'),
+    act7: document.getElementById('act7'),
+    act8: document.getElementById('act8'),
+    epilogue: document.getElementById('epilogue'),
+    evidence: document.getElementById('evidence'),
+    credits: document.getElementById('credits'),
+  };
+
+  timelineDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const target = sectionTargets[dot.dataset.target];
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  function updateTimelineDots() {
+    const mid = window.innerHeight * 0.45;
+    let closestKey = 'hero';
+    let closestDist = Infinity;
+    Object.entries(sectionTargets).forEach(([key, el]) => {
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const dist = Math.abs(rect.top - mid);
+      if (dist < closestDist) { closestDist = dist; closestKey = key; }
+    });
+    timelineDots.forEach(dot => {
+      dot.classList.toggle('active', dot.dataset.target === closestKey);
+    });
+  }
+  window.addEventListener('scroll', updateTimelineDots, { passive: true });
+
+  
   const acts = document.querySelectorAll('[data-act]');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -1357,20 +1694,75 @@
     quote.innerHTML = '"The realm shall forget.<br>But the ledgers shall remember.<br>For they cannot lie."';
     container.appendChild(quote);
 
-    // In Loving Memory — always present
-    const memorial = document.createElement('div');
-    memorial.className = 'crawl-memorial';
-    memorial.innerHTML =
-      '<div class="memorial-label">In Loving Memory Of</div>' +
-      '<div class="memorial-name">Karen Holloway</div>';
-    container.appendChild(memorial);
+	// Efficiency Award — always present
+const memorial = document.createElement('div');
+memorial.className = 'crawl-memorial';
+memorial.innerHTML =
+  '<div class="memorial-label">✦ With Gratitude & Recognition ✦</div>' +
+  '<div class="memorial-name">The Proximity to Excellence Commendation</div>' +
+  '<div class="memorial-sub">' +
+  'Bestowed upon those whose presence<br>' +
+  'in the corridors of industry<br>' +
+  'proved <em>remarkably well-timed.</em><br><br>' +
+  'For the quiet art of being<br>' +
+  '<em>in the right room</em><br>' +
+  'when the ledgers were sealed.<br><br>' +
+  '<span class="memorial-fine-print">' +
+  'Origin of innovation: unattributed. &nbsp;|&nbsp; ' +
+  'Custodians of record: unavailable for comment.<br>' +
+  'Award amount: commensurate with adjacency.' +
+  '</span>' +
+  '</div>';
+container.appendChild(memorial);
 
-    // Special Thanks — always present
+    // Special Thanks — always present with GoT JBQ sigil
     const specialThanks = document.createElement('div');
     specialThanks.className = 'crawl-special-thanks';
     specialThanks.innerHTML =
-      '<div class="special-thanks-label">Special Thanks To</div>' +
-      '<div class="special-thanks-name">Jellybean Queen Entertainment</div>';
+      '<div class="special-thanks-label">A Special Thanks To</div>' +
+      '<div class="crawl-jbq-sigil">' +
+        '<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg" width="130" height="140">' +
+          '<defs>' +
+            '<radialGradient id="cjbqGlow" cx="50%" cy="55%" r="50%"><stop offset="0%" stop-color="#d97706" stop-opacity="0.3"/><stop offset="100%" stop-color="#6b0f1a" stop-opacity="0"/></radialGradient>' +
+            '<radialGradient id="cbg1" cx="35%" cy="30%" r="60%"><stop offset="0%" stop-color="#e8c870"/><stop offset="100%" stop-color="#c9a961"/></radialGradient>' +
+            '<radialGradient id="cbg2" cx="35%" cy="30%" r="60%"><stop offset="0%" stop-color="#962530"/><stop offset="100%" stop-color="#6b0f1a"/></radialGradient>' +
+            '<radialGradient id="cbg3" cx="35%" cy="30%" r="60%"><stop offset="0%" stop-color="#c9a961"/><stop offset="100%" stop-color="#7a6230"/></radialGradient>' +
+          '</defs>' +
+          '<ellipse cx="120" cy="140" rx="105" ry="110" fill="url(#cjbqGlow)"/>' +
+          '<path d="M 120 8 L 210 30 L 210 130 Q 210 210 120 252 Q 30 210 30 130 L 30 30 Z" fill="none" stroke="#c9a961" stroke-width="1.2" stroke-linejoin="round"/>' +
+          '<path d="M 120 18 L 200 38 L 200 128 Q 200 200 120 238 Q 40 200 40 128 L 40 38 Z" fill="none" stroke="#7a6230" stroke-width="0.6" stroke-linejoin="round"/>' +
+          '<g fill="none" stroke="#c9a961" stroke-width="1.1">' +
+            '<path d="M 88 62 L 88 50 L 98 60 L 120 44 L 142 60 L 152 50 L 152 62 L 136 61 Z" fill="#0a0706" stroke="#c9a961"/>' +
+            '<circle cx="88" cy="48" r="2.5" fill="#e8c870"/>' +
+            '<circle cx="120" cy="42" r="3" fill="#e8c870"/>' +
+            '<circle cx="152" cy="48" r="2.5" fill="#e8c870"/>' +
+            '<circle cx="100" cy="59" r="1.8" fill="#962530"/>' +
+            '<circle cx="120" cy="57" r="2" fill="#962530"/>' +
+            '<circle cx="140" cy="59" r="1.8" fill="#962530"/>' +
+            '<circle cx="152" cy="42" r="1.8" fill="#962530"/>' +
+          '</g>' +
+          '<ellipse cx="120" cy="170" rx="52" ry="58" fill="#14100c" stroke="#7a6230" stroke-width="0.8"/>' +
+          '<path d="M 100 118 Q 120 112 140 118 L 142 130 Q 120 124 98 130 Z" fill="#7a6230" stroke="#c9a961" stroke-width="0.5"/>' +
+          '<ellipse cx="87" cy="148" rx="10" ry="7" fill="url(#cbg1)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-30 87 148)"/>' +
+          '<ellipse cx="153" cy="155" rx="10" ry="7" fill="url(#cbg3)" stroke="#6b0f1a" stroke-width="0.5" transform="rotate(20 153 155)"/>' +
+          '<ellipse cx="116" cy="195" rx="11" ry="7.5" fill="url(#cbg3)" stroke="#7a6230" stroke-width="0.5" transform="rotate(10 106 210)"/>' +
+          '<ellipse cx="114" cy="195" rx="10" ry="7" fill="url(#cbg1)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-15 130 205)"/>' +
+          '<ellipse cx="128" cy="168" rx="9" ry="6" fill="url(#cbg3)" stroke="#7a6230" stroke-width="0.5" transform="rotate(15 78 168)"/>' +
+          '<ellipse cx="109" cy="228" rx="9" ry="6" fill="url(#cbg2)" stroke="#6b0f1a" stroke-width="0.5" transform="rotate(40 94 228)"/>' +
+          '<ellipse cx="123" cy="135" rx="10" ry="6.5" fill="url(#cbg2)" stroke="#6b0f1a" stroke-width="0.5" transform="rotate(35 97 155)"/>' +
+          '<ellipse cx="60" cy="150" rx="9" ry="6" fill="url(#cbg1)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-20 60 150)"/>' +
+          '<ellipse cx="180" cy="145" rx="10" ry="7" fill="url(#cbg3)" stroke="#7a6230" stroke-width="0.5" transform="rotate(25 180 145)"/>' +
+          '<ellipse cx="70" cy="190" rx="8" ry="5.5" fill="url(#cbg2)" stroke="#6b0f1a" stroke-width="0.5" transform="rotate(10 70 190)"/>' +
+          '<ellipse cx="165" cy="190" rx="9" ry="6" fill="url(#cbg1)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-15 165 190)"/>' +
+          '<ellipse cx="110" cy="135" rx="8" ry="6.5" fill="url(#cbg3)" stroke="#7a6230" stroke-width="0.5" transform="rotate(5 110 120)"/>' +
+          '<ellipse cx="140" cy="139" rx="8" ry="6" fill="url(#cbg1)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-10 140 120)"/>' +
+          '<ellipse cx="50" cy="210" rx="10" ry="7" fill="url(#cbg2)" stroke="#6b0f1a" stroke-width="0.5" transform="rotate(30 50 210)"/>' +
+          '<ellipse cx="185" cy="215" rx="10" ry="7" fill="url(#cbg3)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-25 185 215)"/>' +
+          '<path d="M 58 237 Q 120 252 182 237 L 180 242 Q 120 256 60 242 Z" fill="#14100c" stroke="#c9a961" stroke-width="0.6"/>' +
+        '</svg>' +
+      '</div>' +
+      '<div class="special-thanks-name">Jellybean Queen Entertainment</div>' +
+      '<div class="special-thanks-motto">Sweetness Endures · The Realm Remembers</div>';
     container.appendChild(specialThanks);
 
     return container;
