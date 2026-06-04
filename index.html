@@ -1626,10 +1626,53 @@
   }, { threshold: 0.15 });
   acts.forEach(a => io.observe(a));
 
-  // ---------- Local audio path (same folder) ----------
-  // Drop an MP3 named "credits-song.mp3" beside this HTML file.
-  // To use a different filename, change the line below.
-  const AUDIO_PATH = './credits-song.mp3';
+  // ---------- Local audio playlist (same folder) ----------
+  // audioEl declared here so playlist event listeners can reference it
+  const audioEl = document.getElementById('credit-audio');
+  // Drop up to 3 MP3 files beside this HTML file named:
+  //   credits-song.mp3  |  credits-song2.mp3  |  credits-song3.mp3
+  // Songs play in order with a 2-3 second gap between each.
+  const AUDIO_PLAYLIST = [
+    './credits-song.mp3',
+    './credits-song2.mp3',
+    './credits-song3.mp3'
+  ];
+
+  let playlistIndex = 0;
+  let playlistTimeout = null;
+  let playlistActive = false;
+
+  function advancePlaylist() {
+    if (!playlistActive) return;
+    playlistIndex++;
+    if (playlistIndex < AUDIO_PLAYLIST.length) {
+      const gap = 2000 + Math.random() * 1000;
+      playlistTimeout = setTimeout(playNextTrack, gap);
+    }
+  }
+
+  function playNextTrack() {
+    if (!playlistActive || playlistIndex >= AUDIO_PLAYLIST.length) return;
+    const path = AUDIO_PLAYLIST[playlistIndex];
+    audioEl.src = path;
+    audioEl.volume = 0.85;
+    audioEl.load();
+    audioEl.play().catch(function(err) {
+      // File not found or blocked -- skip to next track
+      console.log('Audio track skipped (not found or blocked):', path, err);
+      advancePlaylist();
+    });
+  }
+
+  audioEl.addEventListener('ended', function() {
+    advancePlaylist();
+  });
+
+  audioEl.addEventListener('error', function() {
+    if (!playlistActive) return;
+    console.log('Audio error on track', AUDIO_PLAYLIST[playlistIndex], '-- skipping');
+    advancePlaylist();
+  });
 
   // ---------- Build credit crawl content ----------
   function buildCrawl(rawText) {
@@ -1772,7 +1815,6 @@ container.appendChild(memorial);
   const playBtn = document.getElementById('play-btn');
   const overlay = document.getElementById('crawl-overlay');
   const closeBtn = document.getElementById('crawl-close');
-  const audioEl = document.getElementById('credit-audio');
   const castInput = document.getElementById('cast-input');
 
   playBtn.addEventListener('click', () => {
@@ -1807,20 +1849,25 @@ container.appendChild(memorial);
       }, { once: true });
     });
 
-    if (AUDIO_PATH) {
-      audioEl.src = AUDIO_PATH;
-      audioEl.volume = 0.85;
-      audioEl.play().catch(err => {
-        console.log('Audio playback was blocked or the file was not found:', err);
-      });
-    }
+    // Reset and start playlist from track 1
+    audioEl.pause();
+    audioEl.removeAttribute('src');
+    audioEl.load();
+    clearTimeout(playlistTimeout);
+    playlistIndex = 0;
+    playlistActive = true;
+    playNextTrack();
   });
 
   function closeCrawl() {
     overlay.classList.remove('active');
     document.getElementById('justice-screen').classList.remove('visible');
+    playlistActive = false;
     audioEl.pause();
-    audioEl.currentTime = 0;
+    audioEl.removeAttribute('src');
+    audioEl.load();
+    clearTimeout(playlistTimeout);
+    playlistIndex = 0;
   }
 
   closeBtn.addEventListener('click', closeCrawl);
