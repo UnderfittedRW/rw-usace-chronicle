@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Chronicle of a Scribe Cast Adrift — A Tale of the Kingdom USACE</title>
+<meta name="description" content="A true account of institutional misconduct, forged documentation, and deliberate attrition within the US Army Corps of Engineers — told by Royce Williams across three houses of the kingdom from 2022 to 2026.">
+<meta name="author" content="Royce Williams">
+<meta name="keywords" content="Royce Williams, USACE, US Army Corps of Engineers, federal employee misconduct, institutional retaliation, Detroit District, wrongful attrition">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://UnderfittedRW.github.io/rw-usace-chronicle/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Chronicle of a Scribe Cast Adrift — A Tale of the Kingdom USACE">
+<meta property="og:description" content="A true account of institutional misconduct within the Kingdom of USACE. The ledgers remember.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://UnderfittedRW.github.io/rw-usace-chronicle/">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Chronicle of a Scribe Cast Adrift — A Tale of the Kingdom USACE",
+  "description": "A true account of institutional misconduct within the Kingdom of USACE, told by Royce Williams.",
+  "author": {
+    "@type": "Person",
+    "name": "Royce Williams"
+  },
+  "about": [
+    { "@type": "Thing", "name": "USACE" },
+    { "@type": "Thing", "name": "US Army Corps of Engineers" },
+    { "@type": "Thing", "name": "Federal employee misconduct" }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink-black: #0a0706;
+    --shadow: #14100c;
+    --parchment: #e8d4a8;
+    --parchment-dim: #b9a47f;
+    --gold: #c9a961;
+    --gold-bright: #e8c870;
+    --gold-deep: #7a6230;
+    --blood: #6b0f1a;
+    --blood-bright: #962530;
+    --ember: #d97706;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink-black);
+    color: var(--parchment);
+    font-family: 'EB Garamond', 'Garamond', serif;
+    font-size: 19px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Atmospheric layered background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at top, rgba(217, 119, 6, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom, rgba(107, 15, 26, 0.12) 0%, transparent 60%),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(232, 212, 168, 0.012) 2px,
+        rgba(232, 212, 168, 0.012) 4px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+
+  #ember-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  main {
+    position: relative;
+    z-index: 3;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-sigil {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: emerge 2.4s ease-out 0.3s forwards;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.6em;
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: emerge 2.4s ease-out 1.1s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    color: var(--parchment);
+    text-shadow:
+      0 0 30px rgba(201, 169, 97, 0.3),
+      0 0 60px rgba(107, 15, 26, 0.2);
+    margin-bottom: 1.5rem;
+    max-width: 14ch;
+    opacity: 0;
+    animation: emerge 2.4s ease-out 1.4s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    color: var(--parchment-dim);
+    max-width: 50ch;
+    margin-bottom: 4rem;
+    opacity: 0;
+    animation: emerge 2.4s ease-out 1.8s forwards;
+  }
+
+  .hero-house {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--gold-deep);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: emerge 2.4s ease-out 2.2s forwards;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.7rem;
+    color: var(--gold);
+    opacity: 0;
+    animation: emerge 2s ease-out 2.8s forwards, pulse 2.5s ease-in-out 3.5s infinite;
+  }
+
+  .scroll-cue::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    margin: 1rem auto 0;
+  }
+
+  @keyframes emerge {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ---------- ACTS ---------- */
+  .act {
+    min-height: 90vh;
+    padding: 8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .act-inner {
+    max-width: 720px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .act.visible .act-inner {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .act-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .act h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    color: var(--parchment);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 40px rgba(201, 169, 97, 0.15);
+  }
+
+  .act-year {
+    font-family: 'Cinzel', serif;
+    font-style: italic;
+    color: var(--blood-bright);
+    font-size: 1.05rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+  }
+
+  .act p {
+    font-size: 1.2rem;
+    line-height: 1.85;
+    color: var(--parchment);
+    margin-bottom: 1.4rem;
+    text-indent: 0;
+  }
+
+  .act p:first-of-type::first-letter {
+    font-family: 'UnifrakturCook', 'Cinzel Decorative', serif;
+    float: left;
+    font-size: 4.5rem;
+    line-height: 0.85;
+    padding: 0.5rem 0.8rem 0 0;
+    color: var(--gold-bright);
+    text-shadow: 0 0 20px rgba(201, 169, 97, 0.4);
+  }
+
+  .act em {
+    color: var(--gold-bright);
+    font-style: italic;
+  }
+
+  .act strong {
+    color: var(--blood-bright);
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  /* Alternate alignment */
+  .act:nth-child(even) .act-inner {
+    margin-left: auto;
+    text-align: left;
+  }
+
+  /* Sigil divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    gap: 1.5rem;
+  }
+
+  .divider svg {
+    width: 60px;
+    height: 60px;
+    opacity: 0.7;
+  }
+
+  .divider .line {
+    flex: 0 1 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-deep), transparent);
+  }
+
+  /* ---------- EPILOGUE ---------- */
+  .epilogue {
+    text-align: center;
+    padding: 10rem 2rem 6rem;
+  }
+
+  .epilogue .act-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .epilogue h2 {
+    margin-bottom: 2.5rem;
+  }
+
+  .epilogue p {
+    font-size: 1.3rem;
+    font-style: italic;
+    text-align: center;
+  }
+
+  .epilogue p:first-of-type::first-letter {
+    float: none;
+    font-size: inherit;
+    font-family: inherit;
+    color: var(--gold-bright);
+    padding: 0;
+  }
+
+  .signature-block {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gold-deep);
+  }
+
+  .signature-block .seal {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--gold);
+  }
+
+  /* ---------- CREDITS PANEL ---------- */
+  .credits-panel {
+    min-height: 100vh;
+    padding: 6rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid var(--gold-deep);
+    background: linear-gradient(to bottom, transparent, rgba(107, 15, 26, 0.05));
+  }
+
+  .credits-panel h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--parchment);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .credits-panel .lede {
+    font-style: italic;
+    color: var(--parchment-dim);
+    max-width: 56ch;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.05rem;
+  }
+
+  .credits-form {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .credits-form label {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .credits-form textarea {
+    width: 100%;
+    min-height: 240px;
+    background: rgba(20, 16, 12, 0.7);
+    border: 1px solid var(--gold-deep);
+    color: var(--parchment);
+    padding: 1.2rem 1.4rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    border-radius: 0;
+    resize: vertical;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .credits-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 1px var(--gold), 0 0 30px rgba(201, 169, 97, 0.2);
+  }
+
+  .credits-form textarea::placeholder {
+    color: var(--gold-deep);
+    font-style: italic;
+  }
+
+  .memory-input {
+    width: 100%;
+    background: rgba(20, 16, 12, 0.7);
+    border: 1px solid var(--gold-deep);
+    color: var(--parchment);
+    padding: 1rem 1.4rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .memory-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 1px var(--gold), 0 0 30px rgba(201, 169, 97, 0.2);
+  }
+
+  .memory-input::placeholder {
+    color: var(--gold-deep);
+    font-style: italic;
+  }
+
+  .audio-hint {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    color: var(--parchment-dim);
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .audio-hint code {
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    color: var(--gold);
+    background: rgba(201, 169, 97, 0.08);
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--gold-deep);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+
+  .file-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .file-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.4rem;
+    border: 1px solid var(--gold-deep);
+    background: rgba(20, 16, 12, 0.6);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .file-label:hover {
+    border-color: var(--gold);
+    background: rgba(201, 169, 97, 0.05);
+    color: var(--gold-bright);
+  }
+
+  .file-label input { display: none; }
+
+  .file-name {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    color: var(--parchment-dim);
+    font-size: 0.95rem;
+  }
+
+  .play-button {
+    margin-top: 2rem;
+    align-self: center;
+    padding: 1.4rem 4rem;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-bright);
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+
+  .play-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(217, 119, 6, 0.15), rgba(107, 15, 26, 0.2));
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .play-button:hover {
+    color: var(--ink-black);
+    background: var(--gold-bright);
+    box-shadow: 0 0 40px rgba(201, 169, 97, 0.5), 0 0 80px rgba(217, 119, 6, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .play-button span {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---------- CREDIT CRAWL OVERLAY ---------- */
+  .crawl-overlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+  }
+
+  .crawl-overlay.active {
+    display: block;
+  }
+
+  .crawl-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(217, 119, 6, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .crawl-content {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 720px;
+    text-align: center;
+    color: var(--parchment);
+  }
+
+  .crawl-overlay.active .crawl-content {
+    animation: crawl var(--crawl-duration, 120s) linear forwards;
+  }
+
+  @keyframes crawl {
+    from { top: 100%; }
+    to { top: -200%; }
+  }
+
+  .crawl-content h3.crawl-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--gold-bright);
+    text-shadow: 0 0 30px rgba(201, 169, 97, 0.5);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .crawl-content .crawl-sub {
+    font-family: 'Cinzel', serif;
+    font-style: italic;
+    color: var(--parchment-dim);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin-bottom: 5rem;
+  }
+
+  .crawl-content .crawl-section {
+    margin-bottom: 4rem;
+  }
+
+  .crawl-content .crawl-section-label {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gold-deep);
+  }
+
+  .crawl-content .crawl-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: var(--parchment);
+    margin: 0.4rem 0;
+  }
+
+  .crawl-content .crawl-coda {
+    margin-top: 6rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--gold-deep);
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.3rem, 3vw, 2.2rem);
+    color: var(--gold-bright);
+    letter-spacing: 0.1em;
+  }
+
+  .crawl-content .crawl-quote {
+    margin-top: 3rem;
+    font-style: italic;
+    color: var(--parchment-dim);
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+
+  .crawl-content .crawl-memorial {
+    margin-top: 10rem;
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--gold-deep);
+    border-bottom: 1px solid var(--gold-deep);
+    text-align: center;
+    position: relative;
+  }
+
+  .crawl-content .crawl-memorial::before {
+    content: '✦';
+    display: block;
+    font-size: 1rem;
+    color: var(--gold-deep);
+    margin-bottom: 2rem;
+    letter-spacing: 1em;
+    text-indent: 1em;
+  }
+
+  .crawl-content .crawl-memorial::after {
+    content: '✦';
+    display: block;
+    font-size: 1rem;
+    color: var(--gold-deep);
+    margin-top: 2rem;
+    letter-spacing: 1em;
+    text-indent: 1em;
+  }
+
+  .crawl-content .memorial-sub {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--parchment-dim);
+    line-height: 1.9;
+    margin-top: 2rem;
+  }
+
+  .crawl-content .memorial-sub em {
+    color: var(--gold-bright);
+    font-style: italic;
+  }
+
+  .crawl-content .memorial-fine-print {
+    display: block;
+    margin-top: 1.6rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blood-bright);
+    opacity: 0.85;
+    line-height: 2;
+  }
+
+  .crawl-content .memorial-label {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.6em;
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+    text-indent: 0.6em;
+  }
+
+  .crawl-content .memorial-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: var(--parchment);
+    text-shadow:
+      0 0 30px rgba(201, 169, 97, 0.5),
+      0 0 60px rgba(217, 119, 6, 0.25);
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    animation: candleFlicker 4s ease-in-out infinite;
+  }
+
+  @keyframes candleFlicker {
+    0%, 100% {
+      text-shadow:
+        0 0 30px rgba(201, 169, 97, 0.5),
+        0 0 60px rgba(217, 119, 6, 0.25);
+      opacity: 1;
+    }
+    25% {
+      text-shadow:
+        0 0 20px rgba(201, 169, 97, 0.35),
+        0 0 45px rgba(217, 119, 6, 0.15);
+      opacity: 0.92;
+    }
+    50% {
+      text-shadow:
+        0 0 40px rgba(201, 169, 97, 0.65),
+        0 0 80px rgba(217, 119, 6, 0.35);
+      opacity: 1;
+    }
+    75% {
+      text-shadow:
+        0 0 25px rgba(201, 169, 97, 0.4),
+        0 0 50px rgba(217, 119, 6, 0.2);
+      opacity: 0.95;
+    }
+  }
+
+  .crawl-content .crawl-special-thanks {
+    margin-top: 5rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .crawl-content .crawl-special-thanks::before {
+    content: '⚜';
+    display: block;
+    font-size: 1.2rem;
+    color: var(--gold-deep);
+    margin-bottom: 2rem;
+    letter-spacing: 0.6em;
+    text-indent: 0.6em;
+  }
+
+  .crawl-content .special-thanks-label {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.6em;
+    font-size: 0.8rem;
+    color: var(--parchment-dim);
+    margin-bottom: 1.8rem;
+    text-indent: 0.6em;
+  }
+
+  .crawl-content .special-thanks-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    color: var(--gold);
+    text-shadow:
+      0 0 25px rgba(201, 169, 97, 0.45),
+      0 0 50px rgba(217, 119, 6, 0.2);
+    letter-spacing: 0.06em;
+    line-height: 1.35;
+    animation: candleFlicker 5s ease-in-out infinite;
+  }
+
+  .crawl-content .crawl-jbq-sigil {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 1.5rem;
+    filter: drop-shadow(0 0 20px rgba(201, 169, 97, 0.4));
+    animation: jbqFloat 6s ease-in-out infinite;
+  }
+
+  .crawl-content .special-thanks-motto {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    font-size: 0.68rem;
+    color: var(--gold-deep);
+    margin-top: 1rem;
+    text-indent: 0.35em;
+  }
+
+  .crawl-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: 1px solid var(--gold-deep);
+    color: var(--gold);
+    padding: 0.6rem 1.2rem;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    cursor: pointer;
+    z-index: 1001;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+  }
+
+  .crawl-close:hover {
+    opacity: 1;
+    color: var(--gold-bright);
+    border-color: var(--gold);
+  }
+
+  /* Visually hidden — readable by search crawlers, invisible to visitors */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ========== RESPONSIVE — MOBILE ========== */
+
+  /* Prevent any element from overflowing the viewport horizontally */
+  html, body { overflow-x: hidden; }
+  * { max-width: 100%; }
+  img, svg { height: auto; }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+
+    /* Hero */
+    .hero { padding: 3rem 1.2rem; }
+    .hero-sigil { width: 110px; height: 110px; }
+    .hero-eyebrow { letter-spacing: 0.3em; font-size: 0.68rem; }
+    .hero-subtitle { font-size: 1rem; }
+    .hero-house { letter-spacing: 0.2em; font-size: 0.75rem; }
+
+    /* Acts */
+    .act { padding: 4rem 1.2rem; min-height: auto; }
+    .act-inner { width: 100%; padding: 0; }
+    .act p { font-size: 1.05rem; line-height: 1.75; }
+    .act-label { letter-spacing: 0.25em; font-size: 0.68rem; }
+    .act-year { font-size: 0.85rem; letter-spacing: 0.08em; }
+
+    /* Tame the drop-cap so it doesn't push text off-screen */
+    .act p:first-of-type::first-letter {
+      font-size: 3.2rem;
+      padding: 0.3rem 0.5rem 0 0;
+    }
+
+    /* Credits panel */
+    .credits-panel { padding: 3.5rem 1.2rem; }
+    .play-button { padding: 1.1rem 2rem; font-size: 0.9rem; letter-spacing: 0.2em; width: 100%; }
+
+    /* Evidence panel */
+    .evidence-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .evidence-item { padding: 1.4rem 1rem; }
+    .remedy-item { font-size: 0.65rem; letter-spacing: 0.1em; padding: 0.7rem 0.8rem; flex-wrap: wrap; }
+
+    /* Epilogue */
+    .epilogue { padding: 5rem 1.2rem 3rem; }
+    .epilogue p { font-size: 1.05rem; }
+
+    /* Justice screen */
+    .justice-screen { padding: 2rem 1.2rem; }
+    .justice-title { font-size: 2rem; }
+    .justice-line { font-size: 0.95rem; }
+
+    /* Crawl overlay */
+    .crawl-content { width: 94%; }
+    .crawl-content h3.crawl-title { font-size: 1.6rem; }
+    .crawl-content .crawl-name { font-size: 1.2rem; }
+    .crawl-content .memorial-name { font-size: 1.5rem; }
+    .crawl-content .special-thanks-name { font-size: 1.2rem; }
+
+    /* Divider lines shrink on small screens */
+    .divider .line { flex: 0 1 60px; }
+  }
+
+  /* Slightly larger phones / landscape */
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2rem; }
+    .act h2 { font-size: 1.7rem; }
+    .act-year { word-break: break-word; }
+  }
+  /* ---------- SCROLL PROGRESS BAR ---------- */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--blood), var(--gold), var(--gold-bright));
+    z-index: 999;
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  /* ---------- STICKY TIMELINE NAV ---------- */
+  .timeline-nav {
+    position: fixed;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 50;
+    opacity: 0;
+    animation: emerge 1.5s ease-out 3s forwards;
+  }
+
+  .timeline-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--gold-deep);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .timeline-dot::before {
+    content: attr(data-label);
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    background: rgba(10, 7, 6, 0.85);
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--gold-deep);
+  }
+
+  .timeline-dot:hover::before { opacity: 1; }
+
+  .timeline-dot.active,
+  .timeline-dot:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 8px rgba(201, 169, 97, 0.6);
+  }
+
+  @media (max-width: 768px) { .timeline-nav { display: none; } }
+
+  /* ---------- EVIDENCE PANEL ---------- */
+  .evidence-panel {
+    background: linear-gradient(to bottom, rgba(10,7,6,0) 0%, rgba(20,16,12,0.5) 100%);
+    padding: 8rem 2rem;
+  }
+
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0 4rem;
+  }
+
+  .evidence-item {
+    border: 1px solid var(--gold-deep);
+    padding: 2rem;
+    background: rgba(20, 16, 12, 0.4);
+    position: relative;
+    transition: border-color 0.4s, box-shadow 0.4s;
+  }
+
+  .evidence-item::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold-deep), transparent);
+    transition: background 0.4s;
+  }
+
+  .evidence-item:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 30px rgba(201, 169, 97, 0.08);
+  }
+
+  .evidence-item:hover::before {
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .evidence-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.85;
+  }
+
+  .evidence-title {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .evidence-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--parchment-dim);
+  }
+
+  .evidence-cta {
+    border-top: 1px solid var(--gold-deep);
+    padding-top: 3rem;
+    margin-top: 1rem;
+  }
+
+  .remedy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .remedy-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--parchment-dim);
+    padding: 0.8rem 1.2rem;
+    border: 1px solid rgba(122, 98, 48, 0.3);
+    background: rgba(20, 16, 12, 0.3);
+    transition: all 0.3s;
+  }
+
+  .remedy-item:hover {
+    color: var(--parchment);
+    border-color: var(--gold-deep);
+    background: rgba(20, 16, 12, 0.6);
+  }
+
+  .remedy-bullet {
+    color: var(--blood-bright);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  /* Responsive evidence grid */
+  @media (max-width: 640px) {
+    .evidence-grid { grid-template-columns: 1fr; }
+    .remedy-item { font-size: 0.68rem; letter-spacing: 0.15em; }
+  }
+
+  /* ---------- JUSTICE SCREEN ---------- */
+  .justice-screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 2.5s ease-in;
+    padding: 3rem 2rem;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .justice-screen.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .justice-inner {
+    max-width: 680px;
+    width: 100%;
+  }
+
+  .justice-sigil {
+    font-size: 2.5rem;
+    color: var(--blood-bright);
+    opacity: 0.7;
+    margin-bottom: 2rem;
+    display: block;
+  }
+
+  .justice-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 900;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    color: var(--parchment);
+    text-shadow:
+      0 0 40px rgba(150, 37, 48, 0.6),
+      0 0 80px rgba(107, 15, 26, 0.4);
+    letter-spacing: 0.06em;
+    margin-bottom: 2.5rem;
+    animation: justiceFlicker 6s ease-in-out infinite;
+  }
+
+  @keyframes justiceFlicker {
+    0%, 100% { text-shadow: 0 0 40px rgba(150,37,48,0.6), 0 0 80px rgba(107,15,26,0.4); }
+    33%       { text-shadow: 0 0 25px rgba(150,37,48,0.35), 0 0 55px rgba(107,15,26,0.25); }
+    66%       { text-shadow: 0 0 55px rgba(150,37,48,0.75), 0 0 100px rgba(107,15,26,0.5); }
+  }
+
+  .justice-rule {
+    width: 160px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--blood), transparent);
+    margin: 0 auto 2.5rem;
+  }
+
+  .justice-line {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-style: italic;
+    color: var(--parchment-dim);
+    line-height: 1.9;
+    margin-bottom: 1.6rem;
+  }
+
+  .justice-line--accent {
+    color: var(--parchment);
+    font-size: clamp(1.05rem, 2.1vw, 1.3rem);
+    border-left: 2px solid var(--blood);
+    padding-left: 1.2rem;
+    text-align: left;
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.8rem, 1.4vw, 1rem);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+    color: var(--gold);
+  }
+
+  .justice-coda {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-size: 0.8rem;
+    color: var(--gold-deep);
+    margin-top: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="ember-canvas"></canvas>
+<div class="scroll-progress" id="scroll-progress"></div>
+
+<!-- Timeline Nav Dots -->
+<nav class="timeline-nav" aria-label="Chronicle navigation">
+  <div class="timeline-dot active" data-label="The Chronicle" data-target="hero"></div>
+  <div class="timeline-dot" data-label="Act I · Mountain Hall" data-target="act1"></div>
+  <div class="timeline-dot" data-label="Act II · The Breaking" data-target="act2"></div>
+  <div class="timeline-dot" data-label="Act III · Northern Crossing" data-target="act3"></div>
+  <div class="timeline-dot" data-label="Act IV · The Numbers" data-target="act4"></div>
+  <div class="timeline-dot" data-label="Act V · The Threat" data-target="act5"></div>
+  <div class="timeline-dot" data-label="Act VI · False Quest" data-target="act6"></div>
+  <div class="timeline-dot" data-label="Act VII · Western Court" data-target="act7"></div>
+  <div class="timeline-dot" data-label="Act VIII · Betrayal" data-target="act8"></div>
+  <div class="timeline-dot" data-label="Epilogue" data-target="epilogue"></div>
+  <!--<div class="timeline-dot" data-label="The Evidence" data-target="evidence"></div>-->
+  <div class="timeline-dot" data-label="Roll Credits" data-target="credits"></div>
+</nav>
+
+<!-- Hidden from view; readable by search engines -->
+<span class="sr-only">Written by Royce Williams, former employee of the US Army Corps of Engineers (USACE), documenting institutional misconduct across three houses of the kingdom — West Virginia, Detroit, and San Francisco — from 2022 to 2026.</span>
+
+<main>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero" id="hero">
+    <!-- Hero Sigil: Crossed quill & sword -->
+    <svg class="hero-sigil" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="sigilGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e8c870" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#e8c870" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="50" cy="50" r="48" fill="url(#sigilGlow)"/>
+      <circle cx="50" cy="50" r="42" fill="none" stroke="#c9a961" stroke-width="0.6"/>
+      <circle cx="50" cy="50" r="38" fill="none" stroke="#c9a961" stroke-width="0.4" stroke-dasharray="2 3"/>
+      <g stroke="#c9a961" stroke-width="1.2" fill="none" stroke-linecap="round">
+        <line x1="30" y1="30" x2="70" y2="70"/>
+        <line x1="26" y1="34" x2="34" y2="26"/>
+        <circle cx="72" cy="72" r="2" fill="#c9a961"/>
+        <path d="M 70 30 Q 60 35, 55 45 Q 50 55, 40 60 L 30 70" stroke-width="1.4"/>
+        <path d="M 68 32 Q 62 36, 58 42" stroke-width="0.6"/>
+        <path d="M 65 35 Q 60 39, 55 44" stroke-width="0.6"/>
+      </g>
+      <g fill="#c9a961">
+        <circle cx="50" cy="8" r="1.2"/>
+        <circle cx="92" cy="50" r="1.2"/>
+        <circle cx="50" cy="92" r="1.2"/>
+        <circle cx="8" cy="50" r="1.2"/>
+      </g>
+    </svg>
+
+    <div class="hero-eyebrow">A Chronicle in Eight Acts</div>
+    <h1>The Tale of a Scribe Cast Adrift</h1>
+    <p class="hero-subtitle">Wherein a humble keeper of ledgers traverses three houses of a vast kingdom, exposes the rot beneath the marble, and is rewarded with phantom signatures, a false quest spun from shadows, and sentence of exile..</p>
+    <div class="hero-house">— Kingdom of USACE · Houses West Virginia, Detroit & San Francisco · A.D. MMXXII – MMXXVI —</div>
+
+    <div class="scroll-cue">Let the chronicle unfold</div>
+  </section>
+
+  <!-- ============== ACT I ============== -->
+  <section class="act" data-act id="act1">
+    <div class="act-inner">
+      <span class="act-label">Act the First</span>
+      <h2>The Mountain Hall</h2>
+      <div class="act-year">Anno MMXXII · The Green Wilds of West Virginia</div>
+      <p>In the second year after the great plague, I pledged my quill to <em>the Kingdom of USACE</em>, and was sent to the mountain hall in the green wilds — <em>House West Virginia</em> — where operations were ruled by elders gray of beard, slow of mind, who clung to ancient scrolls and forgotten rites as though the rituals themselves were sacred.</p>
+      <p>Their processes were crumbling parchment. Words once meaningful, now mere ceremony. The young scribes labored beneath burdens shaped by men long since departed, and the suffering passed from generation to generation as though it were a holy inheritance.</p>
+      <p>I bore it. For a season, I bore it. But the rot was already showing through the gilding.</p>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#7a6230" stroke-width="0.8">
+        <path d="M 30 5 L 30 55"/>
+        <path d="M 22 13 L 30 5 L 38 13"/>
+        <path d="M 22 47 L 30 55 L 38 47"/>
+        <circle cx="30" cy="30" r="6" stroke="#c9a961"/>
+        <circle cx="30" cy="30" r="2" fill="#c9a961"/>
+      </g>
+    </svg>
+    <span class="line"></span>
+  </div>
+
+  <!-- ============== ACT II ============== -->
+  <section class="act" data-act id="act2">
+    <div class="act-inner">
+      <span class="act-label">Act the Second</span>
+      <h2>The Breaking</h2>
+      <div class="act-year">Anno MMXXIV · The First Resignation</div>
+      <p>For two winters I bore the weight. But on the eve of the third spring, I could bear it no more. I laid down my quill upon the table of the elders. I walked from the mountain hall with my honor intact, and the dust of their bureaucracy shaken clean from my boots.</p>
+      <p>Some called it surrender. I called it <em>refusal</em>. There is a difference, and history has always known it.</p>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#7a6230" stroke-width="0.8">
+        <path d="M 10 30 L 50 30"/>
+        <path d="M 18 22 L 10 30 L 18 38"/>
+        <path d="M 42 22 L 50 30 L 42 38"/>
+        <path d="M 30 22 L 30 38" stroke="#c9a961"/>
+      </g>
+    </svg>
+    <span class="line"></span>
+  </div>
+
+  <!-- ============== ACT III ============== -->
+  <section class="act" data-act id="act3">
+    <div class="act-inner">
+      <span class="act-label">Act the Third</span>
+      <h2>The Northern Crossing</h2>
+      <div class="act-year">Anno MMXXIV · The Great Lakes · House Detroit</div>
+      <p>The Great Lakes called again. The whispers spake of a different house — <em>House Detroit</em> — where operations were the lifeblood of the kingdom, and where a scribe of vision might serve a higher purpose than ritual. </p>
+      <p>So I journeyed north. I pledged anew. And for a brief and golden season, I believed the new banner I served beneath.</p>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#7a6230" stroke-width="0.8">
+        <circle cx="30" cy="30" r="20" stroke="#c9a961"/>
+        <circle cx="30" cy="30" r="14"/>
+        <circle cx="30" cy="30" r="8"/>
+        <circle cx="30" cy="30" r="2" fill="#c9a961"/>
+      </g>
+    </svg>
+    <span class="line"></span>
+  </div>
+
+  <!-- ============== ACT IV ============== -->
+  <section class="act" data-act id="act4">
+    <div class="act-inner">
+      <span class="act-label">Act the Fourth</span>
+      <h2>The Numbers That Spoke Truth</h2>
+      <div class="act-year">In the Halls of Detroit</div>
+      <p>In the halls of Detroit, I laid open the ledgers. I traced gold to deed, and deed to outcome. Where my predecessors had spent gold for the mere sake of spending — that the coffers might be refilled the following year — I dared to ask the question that none had spoken aloud:</p>
+      <p><em>What have we built? What have we earned? Was the gold well-spent, or merely spent?</em></p>
+      <p>The schedulers in their distant chambers grew restless. The analysts in their dim offices began to whisper. For a scribe who ties gold to truth is a scribe who threatens the comfortable rot — and the comfortable rot, dear reader, does not suffer threats kindly.</p>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#7a6230" stroke-width="0.8">
+        <path d="M 30 10 L 38 30 L 30 50 L 22 30 Z" stroke="#c9a961"/>
+        <path d="M 10 30 L 50 30"/>
+        <circle cx="30" cy="30" r="3" fill="#c9a961"/>
+      </g>
+    </svg>
+    <span class="line"></span>
+  </div>
+
+  <!-- ============== ACT V ============== -->
+  <section class="act" data-act id="act5">
+    <div class="act-inner">
+      <span class="act-label">Act the Fifth</span>
+      <h2>A Threat Wearing a Quill</h2>
+      <div class="act-year">When Merit Became a Sin</div>
+      <p>They had named me an ally. Now they named me a <strong>danger</strong>. Not because I had failed — but because I had succeeded. Not because I broke the work — but because I exposed how broken the work had been before I arrived.</p>
+      <p>The lords of seats and chairs descended from on high. Positions came under scrutiny. And rather than weigh men by their merit, the council of <em>House Detroit</em> chose to weigh men by the familiar warmth of their faces.</p>
+      <p>I was unfamiliar. I was inconvenient. I was, above all, <em>correct</em> — and that, in the politics of a dying institution, is the most unforgivable crime of all.</p>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#962530" stroke-width="0.9">
+        <path d="M 30 8 L 30 52"/>
+        <path d="M 18 20 L 30 8 L 42 20"/>
+        <path d="M 18 40 L 30 52 L 42 40"/>
+        <circle cx="30" cy="30" r="5" fill="#6b0f1a"/>
+      </g>
+    </svg>
+    <span class="line"></span>
+  </div>
+
+  <!-- ============== ACT VI ============== -->
+  <section class="act" data-act id="act6">
+    <div class="act-inner">
+      <span class="act-label">Act the Sixth</span>
+      <h2>The False Quest</h2>
+      <div class="act-year">The Conspiracy of the Crooked Ink</div>
+      <p>And so the conspiracy was struck. A summons came: <em>a hundred and twenty days of service to the western house of San Francisco.</em> A noble quest, said they. An opportunity, said they. A chance to broaden the scribe's horizons.</p>
+      <p>But I had read the scroll. I had seen the ink — <strong>crooked, unsteady, drawn by hands not whose names it bore</strong>. The seal was forged. The signatures were ghosts. The bargain had been struck in shadow chambers, and the price of my passage was my exile.</p>
+      <p>What they did not say — what no herald dared to cry aloud — was that the western house had long received a quieter currency: <em>scribes dispatched not by merit but by arrangement</em>, trafficked westward through the disguise of orders, as though the kingdom's talent were merely cargo to be rerouted when it grew inconvenient. A tidy mechanism. Clean hands. The ledger said <em>service</em>; the intent said <em>disposal</em>.</p>
+      <p>I knew from the very first hour what they had planned. They believed me blind. <em>I was not.</em></p>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#962530" stroke-width="0.9">
+        <path d="M 15 15 L 45 45" stroke-dasharray="2 2"/>
+        <path d="M 45 15 L 15 45" stroke-dasharray="2 2"/>
+        <circle cx="30" cy="30" r="8" stroke="#c9a961"/>
+        <circle cx="30" cy="30" r="2" fill="#962530"/>
+      </g>
+    </svg>
+    <span class="line"></span>
+  </div>
+
+  <!-- ============== ACT VII ============== -->
+  <section class="act" data-act id="act7">
+    <div class="act-inner">
+      <span class="act-label">Act the Seventh</span>
+      <h2>The Western Court</h2>
+      <div class="act-year">The City by the Bay</div>
+      <p>San Francisco received me. And in that western house, my methods bore fruit. The lords there saw what Detroit had refused to see — that the scribe had value, that the ledger could be read truly, that the gold could be governed with wisdom rather than wasted with custom.</p>
+      <p>In their slyness, the maidens sought to slow me down, attempting to send me into a stupor with tainted remedies, as though I were no more than a hound for testing herbs.</p>
+      <p>Nonetheless, the Western guild of maesters learned from me. They took what I offered freely. They built upon my silent work.</p>
+      <p>Yet the bargain forged in shadow held its weight. I was already a man cast aside; even as I toiled, they mocked the fruits of my hands. I was a vessel they would soon drain, break, and hurl into the abyss, never to return. <em>Such was the deal. Such had always been the deal.</em></p>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">
+    <span class="line"></span>
+    <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#7a6230" stroke-width="0.8">
+        <path d="M 10 35 Q 20 25, 30 35 T 50 35"/>
+        <path d="M 10 40 Q 20 30, 30 40 T 50 40"/>
+        <path d="M 30 15 L 30 25"/>
+        <path d="M 24 22 L 30 15 L 36 22"/>
+      </g>
+    </svg>
+    <span class="line"></span>
+  </div>
+
+  <!-- ============== ACT VIII ============== -->
+  <section class="act" data-act id="act8">
+    <div class="act-inner">
+      <span class="act-label">Act the Eighth · The Final Betrayal</span>
+      <h2>The Homecoming Trial</h2>
+      <div class="act-year">The Phantom's Signature</div>
+      <p>I returned to the Great Lakes. Not in hope — but in <em>trial</em>. I came to see whether the promise of return — the right plainly inked upon the cursed SF-50 — would hold its weight in the light of day.</p>
+      <p>I came to test the conscience of <em>House Detroit</em>. To witness, with my own eyes, what manner of men they had become. And yet — as I had long since learned — the men were never truly the architects. They were the signatories. The hands that moved the quill belonged to quieter figures, seated just out of view, whose names appeared on nothing and shaped everything.</p>
+      <p>They did not disappoint. They signed the final scroll. And the name upon it <strong>belonged to no living soul</strong>. A phantom's mark. A signature without a man. A countersign drawn by no human hand.</p>
+      <p>The betrayal was complete. And it was witnessed.</p>
+    </div>
+  </section>
+
+  <!-- ============== EPILOGUE ============== -->
+  <section class="act epilogue" data-act id="epilogue">
+    <div class="act-inner">
+      <span class="act-label">— Epilogue —</span>
+      <h2>The Quill, Laid Down</h2>
+      <p>And so I lay down my quill.</p>
+      <p>Not in defeat. Not in shame. But in <em>clarity</em> — for I have seen the rot, and I have named it. I have suffered the schemes, and I have survived them.</p>
+      <p>The realm shall do what realms always do: it shall forget. But the ledgers — the ledgers shall remember. <em>For they cannot lie.</em></p>
+
+      <div class="signature-block">
+        <div class="seal">⚜ Thus Endeth the Chronicle ⚜ </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== CREDITS PANEL ============== -->
+  <section class="credits-panel" id="credits">
+    <h2>Name the Cast</h2>
+    <p class="lede">Every kingdom has its players. Inscribe them below — heroes, villains, schemers, and ghosts alike. When you are ready, let the credits roll across the heavens.</p>
+
+    <div class="credits-form">
+      <div>
+        <label for="cast-input">The Players, Listed (Coming Soon)</label>
+        <textarea id="cast-input" placeholder="&#10;— THE LORDS OF DETROIT —&#10;...&#10;&#10;— THE PRIMARY SCHEMERS —&#10;...&#10;&#10;— THE WESTERN COURT —&#10;...&#10;&#10;"></textarea>
+      </div>
+
+      <p class="audio-hint">♪ Should the bards be present, the music shall find its own way in.</p>
+
+      <button class="play-button" id="play-btn">
+        <span>▶ Roll the Credits</span>
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============== CREDIT CRAWL OVERLAY ============== -->
+<div class="crawl-overlay" id="crawl-overlay">
+  <button class="crawl-close" id="crawl-close">✕ End</button>
+  <audio id="credit-audio"></audio>
+  <div class="crawl-content" id="crawl-content"></div>
+
+  <!-- JUSTICE SCREEN — appears after crawl ends -->
+  <div class="justice-screen" id="justice-screen">
+    <div class="justice-inner">
+      <div class="justice-sigil">⚔</div>
+      <h2 class="justice-title">Justice Will Be Served</h2>
+      <div class="justice-rule"></div>
+
+      <p class="justice-line">The maesters of the USACE kingdom were gifted a scribe of uncommon loyalty.<br>They repaid him with banishment.</p>
+
+      <p class="justice-line justice-line--accent">It is a rare talent — to destroy a man<br>without ever unsheathing a blade.<br>They had that talent in abundance.</p>
+
+      <p class="justice-line">First they moved him. Attempted to bury him. Then they forged the hand<br>that signed away what the law had plainly promised.<br><em>A phantom's countersign. Witnessed. Documented. Remembered.</em></p>
+
+      <p class="justice-line justice-line--accent">In the great tradition of scheming lordlings everywhere:<br>they blamed the ledger-keeper for the ledger's contents.</p>
+
+      <p class="justice-line">Three houses. Eight acts. One man standing.<br>The kingdom may yet forget.<br>But the ledgers, the witnesses — as ever — shall not.</p>
+
+      <div class="justice-rule"></div>
+      <p class="justice-coda">⚜ &nbsp; The Debt of the Unjust Does Not Expire &nbsp; ⚜</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- Ember particles ----------
+  (function emberCanvas() {
+    const canvas = document.getElementById('ember-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, embers;
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    function spawnEmber() {
+      return {
+        x: Math.random() * W,
+        y: H + Math.random() * 60,
+        size: Math.random() * 1.8 + 0.4,
+        vy: -(Math.random() * 0.5 + 0.15),
+        vx: (Math.random() - 0.5) * 0.3,
+        life: 0,
+        maxLife: Math.random() * 600 + 300,
+        hue: Math.random() < 0.7 ? 35 : 20,
+        alpha: Math.random() * 0.5 + 0.2
+      };
+    }
+
+    embers = Array.from({ length: 60 }, spawnEmber);
+
+    function tick() {
+      ctx.clearRect(0, 0, W, H);
+      embers.forEach((e, i) => {
+        e.x += e.vx + Math.sin(e.life / 40) * 0.2;
+        e.y += e.vy;
+        e.life++;
+        if (e.y < -10 || e.life > e.maxLife) {
+          embers[i] = spawnEmber();
+          return;
+        }
+        const fadeIn = Math.min(1, e.life / 60);
+        const fadeOut = Math.min(1, (e.maxLife - e.life) / 100);
+        const a = e.alpha * fadeIn * fadeOut;
+        ctx.beginPath();
+        ctx.fillStyle = `hsla(${e.hue}, 90%, 60%, ${a})`;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = `hsla(${e.hue}, 100%, 50%, ${a * 0.8})`;
+        ctx.arc(e.x, e.y, e.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.shadowBlur = 0;
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+
+  // ---------- Scroll progress bar ----------
+  const progressBar = document.getElementById('scroll-progress');
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  // ---------- Timeline nav ----------
+  const timelineDots = document.querySelectorAll('.timeline-dot');
+  const sectionTargets = {
+    hero: document.getElementById('hero'),
+    act1: document.getElementById('act1'),
+    act2: document.getElementById('act2'),
+    act3: document.getElementById('act3'),
+    act4: document.getElementById('act4'),
+    act5: document.getElementById('act5'),
+    act6: document.getElementById('act6'),
+    act7: document.getElementById('act7'),
+    act8: document.getElementById('act8'),
+    epilogue: document.getElementById('epilogue'),
+    evidence: document.getElementById('evidence'),
+    credits: document.getElementById('credits'),
+  };
+
+  timelineDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const target = sectionTargets[dot.dataset.target];
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  function updateTimelineDots() {
+    const mid = window.innerHeight * 0.45;
+    let closestKey = 'hero';
+    let closestDist = Infinity;
+    Object.entries(sectionTargets).forEach(([key, el]) => {
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const dist = Math.abs(rect.top - mid);
+      if (dist < closestDist) { closestDist = dist; closestKey = key; }
+    });
+    timelineDots.forEach(dot => {
+      dot.classList.toggle('active', dot.dataset.target === closestKey);
+    });
+  }
+  window.addEventListener('scroll', updateTimelineDots, { passive: true });
+
+  
+  const acts = document.querySelectorAll('[data-act]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  acts.forEach(a => io.observe(a));
+
+  // ---------- Local audio playlist (same folder) ----------
+  // audioEl declared here so playlist event listeners can reference it
+  const audioEl = document.getElementById('credit-audio');
+  // Drop up to 3 MP3 files beside this HTML file named:
+  //   credits-song.mp3  |  credits-song2.mp3  |  credits-song3.mp3  |  credits-song4.mp3  |  credits-song5.mp3
+  // Songs play in order with a 2-3 second gap between each.
+  const AUDIO_PLAYLIST = [
+    './credits-song.mp3',
+    './credits-song2.mp3',
+    './credits-song3.mp3',
+    './credits-song4.mp3',
+    './credits-song5.mp3'
+  ];
+
+  let playlistIndex = 0;
+  let playlistTimeout = null;
+  let playlistActive = false;
+
+  function advancePlaylist() {
+    if (!playlistActive) return;
+    playlistIndex++;
+    if (playlistIndex < AUDIO_PLAYLIST.length) {
+      const gap = 2000 + Math.random() * 1000;
+      playlistTimeout = setTimeout(playNextTrack, gap);
+    }
+  }
+
+  function playNextTrack() {
+    if (!playlistActive || playlistIndex >= AUDIO_PLAYLIST.length) return;
+    const path = AUDIO_PLAYLIST[playlistIndex];
+    audioEl.src = path;
+    audioEl.volume = 0.85;
+    audioEl.load();
+    audioEl.play().catch(function(err) {
+      // File not found or blocked -- skip to next track
+      console.log('Audio track skipped (not found or blocked):', path, err);
+      advancePlaylist();
+    });
+  }
+
+  audioEl.addEventListener('ended', function() {
+    advancePlaylist();
+  });
+
+  audioEl.addEventListener('error', function() {
+    if (!playlistActive) return;
+    console.log('Audio error on track', AUDIO_PLAYLIST[playlistIndex], '-- skipping');
+    advancePlaylist();
+  });
+
+  // ---------- Build credit crawl content ----------
+  function buildCrawl(rawText) {
+    const lines = rawText.split('\n').map(l => l.trim());
+    const container = document.getElementById('crawl-content');
+    container.innerHTML = '';
+
+    // Title block
+    const title = document.createElement('h3');
+    title.className = 'crawl-title';
+    title.textContent = 'The Chronicle of a Scribe Cast Adrift';
+    container.appendChild(title);
+
+    const sub = document.createElement('div');
+    sub.className = 'crawl-sub';
+    sub.textContent = 'A True Tale of the Kingdom USACE';
+    container.appendChild(sub);
+
+    // Process lines into sections
+    let currentSection = null;
+    lines.forEach(line => {
+      if (!line) return;
+
+      // A section header: line starting with — or - or all caps with ---
+      const isSectionHeader = /^[—–-]{1,2}\s*.+\s*[—–-]{1,2}$/.test(line) ||
+                              /^[—–-]{2,}/.test(line) ||
+                              (line === line.toUpperCase() && line.length > 4 && !line.match(/[a-z]/));
+
+      if (isSectionHeader) {
+        currentSection = document.createElement('div');
+        currentSection.className = 'crawl-section';
+        const label = document.createElement('div');
+        label.className = 'crawl-section-label';
+        label.textContent = line.replace(/^[—–\-\s]+|[—–\-\s]+$/g, '');
+        currentSection.appendChild(label);
+        container.appendChild(currentSection);
+      } else {
+        if (!currentSection) {
+          currentSection = document.createElement('div');
+          currentSection.className = 'crawl-section';
+          const label = document.createElement('div');
+          label.className = 'crawl-section-label';
+          label.textContent = 'The Cast';
+          currentSection.appendChild(label);
+          container.appendChild(currentSection);
+        }
+        const name = document.createElement('div');
+        name.className = 'crawl-name';
+        name.textContent = line;
+        currentSection.appendChild(name);
+      }
+    });
+
+    // Coda
+    const coda = document.createElement('div');
+    coda.className = 'crawl-coda';
+    coda.textContent = '⚜ Thus Endeth the Chronicle ⚜';
+    container.appendChild(coda);
+
+    const quote = document.createElement('div');
+    quote.className = 'crawl-quote';
+    quote.innerHTML = '"The realm shall forget.<br>But the ledgers shall remember.<br>For they cannot lie."';
+    container.appendChild(quote);
+
+	// Efficiency Award — always present
+const memorial = document.createElement('div');
+memorial.className = 'crawl-memorial';
+memorial.innerHTML =
+  '<div class="memorial-label">✦ With Gratitude & Recognition ✦</div>' +
+  '<div class="memorial-name">The Proximity to Excellence Commendation</div>' +
+  '<div class="memorial-sub">' +
+  'Bestowed upon those whose presence<br>' +
+  'in the corridors of industry<br>' +
+  'proved <em>remarkably well-timed.</em><br><br>' +
+  'For the quiet art of being<br>' +
+  '<em>in the right room</em><br>' +
+  'when the ledgers were sealed.<br><br>' +
+  '<span class="memorial-fine-print">' +
+  'Origin of innovation: unattributed. &nbsp;|&nbsp; ' +
+  'Custodians of record: unavailable for comment.<br>' +
+  'Award amount: commensurate with adjacency.' +
+  '</span>' +
+  '</div>';
+container.appendChild(memorial);
+
+    // Special Thanks — always present with GoT JBQ sigil
+    const specialThanks = document.createElement('div');
+    specialThanks.className = 'crawl-special-thanks';
+    specialThanks.innerHTML =
+      '<div class="special-thanks-label">A Special Thanks To</div>' +
+      '<div class="crawl-jbq-sigil">' +
+        '<svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg" width="130" height="140">' +
+          '<defs>' +
+            '<radialGradient id="cjbqGlow" cx="50%" cy="55%" r="50%"><stop offset="0%" stop-color="#d97706" stop-opacity="0.3"/><stop offset="100%" stop-color="#6b0f1a" stop-opacity="0"/></radialGradient>' +
+            '<radialGradient id="cbg1" cx="35%" cy="30%" r="60%"><stop offset="0%" stop-color="#e8c870"/><stop offset="100%" stop-color="#c9a961"/></radialGradient>' +
+            '<radialGradient id="cbg2" cx="35%" cy="30%" r="60%"><stop offset="0%" stop-color="#962530"/><stop offset="100%" stop-color="#6b0f1a"/></radialGradient>' +
+            '<radialGradient id="cbg3" cx="35%" cy="30%" r="60%"><stop offset="0%" stop-color="#c9a961"/><stop offset="100%" stop-color="#7a6230"/></radialGradient>' +
+          '</defs>' +
+          '<ellipse cx="120" cy="140" rx="105" ry="110" fill="url(#cjbqGlow)"/>' +
+          '<path d="M 120 8 L 210 30 L 210 130 Q 210 210 120 252 Q 30 210 30 130 L 30 30 Z" fill="none" stroke="#c9a961" stroke-width="1.2" stroke-linejoin="round"/>' +
+          '<path d="M 120 18 L 200 38 L 200 128 Q 200 200 120 238 Q 40 200 40 128 L 40 38 Z" fill="none" stroke="#7a6230" stroke-width="0.6" stroke-linejoin="round"/>' +
+          '<g fill="none" stroke="#c9a961" stroke-width="1.1">' +
+            '<path d="M 88 62 L 88 50 L 98 60 L 120 44 L 142 60 L 152 50 L 152 62 L 136 61 Z" fill="#0a0706" stroke="#c9a961"/>' +
+            '<circle cx="88" cy="48" r="2.5" fill="#e8c870"/>' +
+            '<circle cx="120" cy="42" r="3" fill="#e8c870"/>' +
+            '<circle cx="152" cy="48" r="2.5" fill="#e8c870"/>' +
+            '<circle cx="100" cy="59" r="1.8" fill="#962530"/>' +
+            '<circle cx="120" cy="57" r="2" fill="#962530"/>' +
+            '<circle cx="140" cy="59" r="1.8" fill="#962530"/>' +
+            '<circle cx="152" cy="42" r="1.8" fill="#962530"/>' +
+          '</g>' +
+          '<ellipse cx="120" cy="170" rx="52" ry="58" fill="#14100c" stroke="#7a6230" stroke-width="0.8"/>' +
+          '<path d="M 100 118 Q 120 112 140 118 L 142 130 Q 120 124 98 130 Z" fill="#7a6230" stroke="#c9a961" stroke-width="0.5"/>' +
+          '<ellipse cx="87" cy="148" rx="10" ry="7" fill="url(#cbg1)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-30 87 148)"/>' +
+          '<ellipse cx="153" cy="155" rx="10" ry="7" fill="url(#cbg3)" stroke="#6b0f1a" stroke-width="0.5" transform="rotate(20 153 155)"/>' +
+          '<ellipse cx="116" cy="195" rx="11" ry="7.5" fill="url(#cbg3)" stroke="#7a6230" stroke-width="0.5" transform="rotate(10 106 210)"/>' +
+          '<ellipse cx="114" cy="195" rx="10" ry="7" fill="url(#cbg1)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-15 130 205)"/>' +
+          '<ellipse cx="128" cy="168" rx="9" ry="6" fill="url(#cbg3)" stroke="#7a6230" stroke-width="0.5" transform="rotate(15 78 168)"/>' +
+          '<ellipse cx="109" cy="228" rx="9" ry="6" fill="url(#cbg2)" stroke="#6b0f1a" stroke-width="0.5" transform="rotate(40 94 228)"/>' +
+          '<ellipse cx="123" cy="135" rx="10" ry="6.5" fill="url(#cbg2)" stroke="#6b0f1a" stroke-width="0.5" transform="rotate(35 97 155)"/>' +
+          '<ellipse cx="60" cy="150" rx="9" ry="6" fill="url(#cbg1)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-20 60 150)"/>' +
+          '<ellipse cx="180" cy="145" rx="10" ry="7" fill="url(#cbg3)" stroke="#7a6230" stroke-width="0.5" transform="rotate(25 180 145)"/>' +
+          '<ellipse cx="70" cy="190" rx="8" ry="5.5" fill="url(#cbg2)" stroke="#6b0f1a" stroke-width="0.5" transform="rotate(10 70 190)"/>' +
+          '<ellipse cx="165" cy="190" rx="9" ry="6" fill="url(#cbg1)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-15 165 190)"/>' +
+          '<ellipse cx="110" cy="135" rx="8" ry="6.5" fill="url(#cbg3)" stroke="#7a6230" stroke-width="0.5" transform="rotate(5 110 120)"/>' +
+          '<ellipse cx="140" cy="139" rx="8" ry="6" fill="url(#cbg1)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-10 140 120)"/>' +
+          '<ellipse cx="50" cy="210" rx="10" ry="7" fill="url(#cbg2)" stroke="#6b0f1a" stroke-width="0.5" transform="rotate(30 50 210)"/>' +
+          '<ellipse cx="185" cy="215" rx="10" ry="7" fill="url(#cbg3)" stroke="#7a6230" stroke-width="0.5" transform="rotate(-25 185 215)"/>' +
+          '<path d="M 58 237 Q 120 252 182 237 L 180 242 Q 120 256 60 242 Z" fill="#14100c" stroke="#c9a961" stroke-width="0.6"/>' +
+        '</svg>' +
+      '</div>' +
+      '<div class="special-thanks-name">Jellybean Queen Entertainment</div>' +
+      '<div class="special-thanks-motto">Sweetness Endures · The Realm Remembers</div>';
+    container.appendChild(specialThanks);
+
+    return container;
+  }
+
+  // ---------- Play credits ----------
+  const playBtn = document.getElementById('play-btn');
+  const overlay = document.getElementById('crawl-overlay');
+  const closeBtn = document.getElementById('crawl-close');
+  const castInput = document.getElementById('cast-input');
+
+  playBtn.addEventListener('click', () => {
+    const text = castInput.value.trim() || 'The Cast — Names Unspoken (For Now..)';
+    const container = buildCrawl(text);
+
+    // Reset justice screen
+    const justiceScreen = document.getElementById('justice-screen');
+    justiceScreen.classList.remove('visible');
+
+    // Estimate crawl duration based on content height (slower = more dramatic)
+    overlay.classList.add('active');
+    // Force reflow then measure
+    requestAnimationFrame(() => {
+      const contentHeight = container.scrollHeight;
+      const viewportHeight = window.innerHeight;
+      // Roughly 100 px per second — slow, cinematic
+      const totalDistance = contentHeight + viewportHeight * 1.5;
+      const duration = Math.max(40, Math.min(480, totalDistance / 30));
+      overlay.style.setProperty('--crawl-duration', duration + 's');
+
+      // Restart animation
+      container.style.animation = 'none';
+      container.offsetHeight; // reflow
+      container.style.animation = '';
+
+      // Fade in justice screen 1.5s after crawl finishes
+      container.addEventListener('animationend', () => {
+        setTimeout(() => {
+          justiceScreen.classList.add('visible');
+        }, 1500);
+      }, { once: true });
+    });
+
+    // Reset and start playlist from track 1
+    audioEl.pause();
+    audioEl.removeAttribute('src');
+    audioEl.load();
+    clearTimeout(playlistTimeout);
+    playlistIndex = 0;
+    playlistActive = true;
+    playNextTrack();
+  });
+
+  function closeCrawl() {
+    overlay.classList.remove('active');
+    document.getElementById('justice-screen').classList.remove('visible');
+    playlistActive = false;
+    audioEl.pause();
+    audioEl.removeAttribute('src');
+    audioEl.load();
+    clearTimeout(playlistTimeout);
+    playlistIndex = 0;
+  }
+
+  closeBtn.addEventListener('click', closeCrawl);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) closeCrawl();
+  });
+</script>
+
+</body>
+</html>
