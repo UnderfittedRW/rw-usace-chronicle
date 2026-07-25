@@ -1859,7 +1859,7 @@ container.appendChild(memorial);
       const viewportHeight = window.innerHeight;
       // Roughly 100 px per second — slow, cinematic
       const totalDistance = contentHeight + viewportHeight * 1.5;
-      const duration = Math.max(40, Math.min(480, totalDistance / 35));
+      const duration = Math.max(40, Math.min(480, totalDistance / 37.5));
       overlay.style.setProperty('--crawl-duration', duration + 's');
 
       // Restart animation
