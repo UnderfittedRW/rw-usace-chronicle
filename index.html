@@ -2055,6 +2055,17 @@ container.appendChild(memorial);
       '</div>';
     container.appendChild(pivotCredit);
 
+    // Disclaimer — always present
+    const DisclCredit = document.createElement('div');
+    DisclCredit.className = 'crawl-DisclCredit';
+    DisclCredit.innerHTML =
+      '<div class="memorial-label"> </div>' +
+      '<div class="memorial-label">Not affiliated with USAA</div>' +
+      '<div class="memorial-label">All trademarks are property of their respective & trusted owners.</div>' +
+      '</span>' +
+      '</div>';
+    container.appendChild(DisclCredit);	
+
     return container;
   }
 
