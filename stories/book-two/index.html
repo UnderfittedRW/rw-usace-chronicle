@@ -54,7 +54,14 @@ button:hover{background:var(--surface-1)}button:active{transform:scale(.98)}
 .mo{padding:4px 12px;font-size:13px}
 .mo span{color:var(--muted);margin-left:5px}
 .mo[data-on="1"]{background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent)}
-.track{overflow-x:auto;padding:6px 4px 18px;cursor:grab;scrollbar-width:thin}
+.track{overflow-x:auto;padding:6px 4px 22px;cursor:grab}
+.track::-webkit-scrollbar{height:10px}
+.track::-webkit-scrollbar-button{display:none;width:0;height:0}
+.track::-webkit-scrollbar-track{background:var(--surface-1);border-radius:999px;margin:0 12px}
+.track::-webkit-scrollbar-thumb{background:var(--muted);border-radius:999px;border:2px solid var(--surface-1)}
+.track::-webkit-scrollbar-thumb:hover{background:var(--text-2);border-width:1px}
+.track::-webkit-scrollbar-thumb:active{background:var(--text-2);border-width:0}
+@supports not selector(::-webkit-scrollbar){.track{scrollbar-width:thin;scrollbar-color:#7F77DD var(--surface-1)}}
 .track.dragging{cursor:grabbing;user-select:none}
 .track:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:12px}
 .rail{display:flex;gap:20px;position:relative;width:max-content;padding:0 12px}
