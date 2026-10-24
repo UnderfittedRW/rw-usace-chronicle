@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project TRIAD · Research Notebook</title>
+<meta name="description" content="The research notebook of Dr. Elias Thorne, who combines gamma exposure, extreme training, and an experimental compound on himself, and slowly takes over his own study.">
+<link rel="canonical" href="https://UnderfittedRW.github.io/rw-usace-chronicle/stories/book-two/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Project TRIAD · Research Notebook">
+<meta property="og:description" content="Gamma, Grind, Genius. Ten months, three protocols, one subject.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://UnderfittedRW.github.io/rw-usace-chronicle/stories/book-two/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.42.0/dist/tabler-icons.min.css">
+<style>
+:root{
+  --bg:#f9f9f7;--surface:#ffffff;--surface-1:#f1f0ec;--text:#141413;--text-2:#52514e;--muted:#898781;
+  --border:rgba(11,11,11,.1);--border-strong:rgba(11,11,11,.2);--border-stronger:rgba(11,11,11,.4);
+  --accent:#2a78d6;--accent-bg:#e7f1fb;--accent-text:#184f95;--danger:#a32c2c;--danger-border:#f09595;
+  --success:#3B6D11;--radius:8px;
+  --gamma-t:#3B6D11;--training-t:#854F0B;--neural-t:#534AB7;--convergence-t:#0F6E56;--research-t:#993C1D;
+  --sans:"Anthropic Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#1a1a19;--surface:#262624;--surface-1:#30302e;--text:#f0efec;--text-2:#c3c2b7;--muted:#898781;
+    --border:rgba(255,255,255,.1);--border-strong:rgba(255,255,255,.2);--border-stronger:rgba(255,255,255,.4);
+    --accent-bg:#032042;--accent-text:#6da7ec;--danger:#ec7e7e;--danger-border:#641919;--success:#97C459;
+    --gamma-t:#97C459;--training-t:#EF9F27;--neural-t:#AFA9EC;--convergence-t:#5DCAA5;--research-t:#F0997B;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans)}
+.wrap{max-width:1480px;min-height:100vh;margin:0 auto;padding:44px clamp(20px,4vw,64px) 64px;display:flex;flex-direction:column;gap:28px}
+button{font:inherit;font-size:13px;padding:8px 14px;background:transparent;color:var(--text);border:0.5px solid var(--border-strong);border-radius:var(--radius);cursor:pointer;transition:background .15s,transform .1s}
+button:hover{background:var(--surface-1)}button:active{transform:scale(.98)}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;padding-bottom:24px;border-bottom:0.5px solid var(--border)}
+.title{font-size:30px;font-weight:500;margin:0 0 6px;letter-spacing:-.01em}
+.title span{color:var(--text-2);font-weight:400}
+.sub{font-size:15px;color:var(--text-2);margin:0 0 14px}
+.roster{display:flex;gap:22px;flex-wrap:wrap;font-size:13px;color:var(--text-2)}
+.roster i{font-size:16px;vertical-align:-3px;margin-right:6px;color:var(--muted)}
+.stamp{font-family:var(--mono);font-size:12px;color:var(--danger);border:1px solid var(--danger-border);border-radius:var(--radius);padding:6px 12px;white-space:nowrap}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip[aria-pressed="true"]{background:var(--surface-1);border-color:var(--border-stronger)}
+.sw{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px}
+.nav{display:flex;gap:8px;align-items:center}
+.counter{font-size:13px;color:var(--text-2);margin-right:6px}
+.months{display:flex;gap:6px;flex-wrap:wrap}
+.mo{padding:4px 12px;font-size:13px}
+.mo span{color:var(--muted);margin-left:5px}
+.mo[data-on="1"]{background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent)}
+.track{overflow-x:auto;padding:6px 4px 18px;cursor:grab;scrollbar-width:thin}
+.track.dragging{cursor:grabbing;user-select:none}
+.track:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:12px}
+.rail{display:flex;gap:20px;position:relative;width:max-content;padding:0 12px}
+.rail::before{content:"";position:absolute;left:0;right:0;top:8px;height:2px;background:var(--border-strong)}
+.item{flex:0 0 300px}
+.node{display:flex;align-items:center;gap:10px;height:18px;margin-bottom:14px}
+.dot{width:16px;height:16px;border-radius:50%;border:3px solid var(--bg);position:relative;z-index:1;flex:none}
+.date{font-size:13px;color:var(--text-2);background:var(--bg);padding:0 8px;position:relative;z-index:1}
+.card{background:var(--surface);border:0.5px solid var(--border);border-radius:14px;padding:18px 20px;height:184px;cursor:pointer;transition:border-color .15s}
+.card:hover{border-color:var(--border-stronger)}
+.item.active .card{border:2px solid var(--accent);padding:16.5px 18.5px}
+.meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.log{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.badge{font-size:12px;padding:3px 10px;border-radius:var(--radius)}
+.ctitle{font-size:16px;font-weight:500;line-height:1.35;margin-bottom:8px}
+.csum{font-size:14px;color:var(--text-2);line-height:1.55}
+.progress{display:flex;align-items:center;gap:14px;font-size:13px;color:var(--text-2)}
+.bar{height:6px;border-radius:3px;background:var(--surface-1);overflow:hidden;flex:1}
+.bar>span{display:block;height:100%;border-radius:3px;transition:width .4s}
+.detail{background:var(--surface);border:0.5px solid var(--border);border-radius:16px;padding:32px 36px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:44px}
+.dmeta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.dtitle{font-size:24px;font-weight:500;margin:0 0 14px;line-height:1.3}
+.dbody{font-size:16px;line-height:1.8;margin:0 0 20px;max-width:72ch}
+.dnote{border-top:0.5px solid var(--border);padding-top:16px;font-size:15px;color:var(--text-2)}
+.dnote i{margin-right:8px}
+.dnote span{font-family:var(--serif);font-style:italic}
+.stats{border-left:0.5px solid var(--border);padding-left:40px}
+.shead{font-size:13px;color:var(--text-2);margin-bottom:18px}
+.lead{display:flex;justify-content:space-between;align-items:center;background:var(--surface-1);border-radius:var(--radius);padding:12px 14px;margin-bottom:22px;font-size:13px}
+.lead b{font-weight:500}
+.stat{margin-bottom:18px}
+.srow{display:flex;justify-content:space-between;font-size:14px;margin-bottom:7px}
+.srow small{color:var(--muted);font-size:13px}
+.delta{font-size:12px;margin-left:6px}
+.c-gamma{background:#639922}.c-training{background:#BA7517}.c-neural{background:#7F77DD}.c-convergence{background:#1D9E75}.c-research{background:#D85A30}
+.b-gamma{background:rgba(99,153,34,.15);color:var(--gamma-t)}.b-training{background:rgba(186,117,23,.15);color:var(--training-t)}.b-neural{background:rgba(127,119,221,.16);color:var(--neural-t)}.b-convergence{background:rgba(29,158,117,.15);color:var(--convergence-t)}.b-research{background:rgba(216,90,48,.15);color:var(--research-t)}
+@media (max-width:900px){.detail{grid-template-columns:1fr;padding:24px;gap:28px}.stats{border-left:none;padding-left:0;border-top:0.5px solid var(--border);padding-top:24px}.item{flex-basis:260px}}
+.back{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;font-size:13px;color:var(--text-2);text-decoration:none;padding:6px 12px;margin-bottom:-12px;border:0.5px solid var(--border-strong);border-radius:var(--radius);transition:background .15s,color .15s}
+.back:hover{background:var(--surface-1);color:var(--text)}
+.back i{font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../../index.html"><i class="ti ti-arrow-left" aria-hidden="true"></i>Back to the library</a>
+
+  <header class="head">
+    <div>
+      <h1 class="title">Project TRIAD <span>· Gamma, Grind, Genius</span></h1>
+      <p class="sub">Research notebook of Dr. Elias Thorne · subject turned investigator</p>
+      <div class="roster">
+        <span><i class="ti ti-heart-handshake" aria-hidden="true"></i>Caretaker: Mary Ann</span>
+        <span><i class="ti ti-clipboard-list" aria-hidden="true"></i>Monitoring: Drs. Halvorsen, Okafor and Reyes</span>
+        <span><i class="ti ti-calendar" aria-hidden="true"></i><span id="span"></span></span>
+      </div>
+    </div>
+    <div class="stamp">Classification: Top Secret</div>
+  </header>
+
+  <div class="toolbar">
+    <div class="chips" id="filters">
+      <button class="chip" data-f="all" aria-pressed="true">All</button>
+      <button class="chip" data-f="gamma" aria-pressed="false"><span class="sw c-gamma"></span>Gamma</button>
+      <button class="chip" data-f="training" aria-pressed="false"><span class="sw c-training"></span>Training</button>
+      <button class="chip" data-f="neural" aria-pressed="false"><span class="sw c-neural"></span>Neural</button>
+      <button class="chip" data-f="research" aria-pressed="false"><span class="sw c-research"></span>Research</button>
+      <button class="chip" data-f="convergence" aria-pressed="false"><span class="sw c-convergence"></span>Convergence</button>
+    </div>
+    <div class="nav">
+      <span class="counter" id="counter"></span>
+      <button id="prev" aria-label="Previous entry"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+      <button id="next" aria-label="Next entry"><i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+      <button id="latest">Latest</button>
+    </div>
+  </div>
+
+  <div class="months" id="months"></div>
+
+  <div id="track" class="track" tabindex="0" aria-label="Timeline. Use arrow keys, drag, or scroll to move between entries."><div id="rail" class="rail"></div></div>
+
+  <div class="progress">
+    <span id="startLabel"></span>
+    <div class="bar"><span id="prog" style="background:var(--accent);width:0"></span></div>
+    <span id="dayLabel"></span>
+  </div>
+
+  <section class="detail">
+    <div>
+      <div class="dmeta"><span id="dLog" class="log"></span><span id="dBadge" class="badge"></span><span id="dDate" style="font-size:13px;color:var(--text-2)"></span></div>
+      <h2 id="dTitle" class="dtitle"></h2>
+      <p id="dBody" class="dbody"></p>
+      <div class="dnote"><i class="ti ti-pencil" aria-hidden="true"></i><span id="dNote"></span></div>
+    </div>
+    <div class="stats">
+      <div class="shead">Subject readings at time of entry</div>
+      <div class="lead"><span style="color:var(--text-2)">Lead investigator</span><b id="lead"></b></div>
+      <div id="stats"></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const LOGS=[
+{id:"001",date:"2026-01-03",cat:"convergence",title:"Hypothesis filed",summary:"Three protocols, one subject. The subject is me.",body:"Superhuman capability has been documented three ways: gamma-induced cellular restructuring (the Banner incident), extreme high-frequency training (100 push-ups, 100 sit-ups, 100 squats, 10 km, daily), and pharmacological cognitive expansion (NZT-48). No one has attempted all three concurrently. I intend to. The program has approved it, on conditions. I have laminated my own lab badge.",note:"Ethics board consulted. It assigned me a caretaker and three scientists. My cat was not consulted and is furious.",s:[12,58,0,71,5]},
+{id:"002",date:"2026-01-07",cat:"research",title:"Oversight assigned",summary:"A caretaker, three scientists, and zero access to my own charts.",body:"The program's conditions arrived at 8 a.m. sharp, along with Mary Ann, my assigned caretaker, who brought a binder, a blood-pressure cuff, and a casserole. Monitoring is led by Dr. Halvorsen, with Dr. Okafor on physiology and Dr. Reyes on neurology. The subject is not permitted to view his own data. The subject's pen has been confiscated “until further notice.”",note:"Requested access to my own charts. Denied. The casserole was excellent.",s:[12,58,0,68,2]},
+{id:"003",date:"2026-01-19",cat:"training",title:"Day 1 of the regimen",summary:"100 push-ups completed across four hours and eleven sets.",body:"Attempted the original protocol as written. Push-ups complete by 2:40 p.m. Sit-ups complete by dinner. The 10 km run was completed, though I must disclose that kilometers 6 through 9 took place on the number 14 bus. Data integrity is everything. This entry has been flagged.",note:"Squats: 100. Successful attempts at standing up afterwards: 1.",s:[15,58,0,64,2]},
+{id:"004",date:"2026-02-09",cat:"training",title:"Peer review humbles the subject",summary:"Switched to a periodized program. Added pull-ups. Accepted rest days.",body:"Literature review indicates the original protocol produces overuse injury, shoulder imbalance, and a plateau within weeks. Adopted an adapted 13-week cycle: six days of push, pull, and legs, conversational-pace running, and one full rest day. A future superhuman taking Sundays off. I have made peace with it. Mostly.",note:"Shin splints resolved. Ego remains inflamed.",s:[22,59,0,70,4]},
+{id:"005",date:"2026-02-27",cat:"gamma",title:"First exposure: the Lattice",summary:"90 seconds inside the recovered emitter array. No change observed.",body:"Acquired the Lattice, a decommissioned emitter array of unclear provenance, from an auction lot labeled “misc. lab equipment, as is.” First session ran 90 seconds. No mass change, no cognitive change. Left thumbnail has developed a faint green tint. Could be gamma. Could be the pistachio gelato. Testing both.",note:"Purchased more gelato. For science.",s:[23,59,4,70,4]},
+{id:"006",date:"2026-03-15",cat:"neural",title:"Compound NZ received",summary:"One vial from a former colleague who will not say where it came from.",body:"V. delivered a single vial labeled only NZ and left before I could ask questions. Twenty minutes later: perfect recall of every textbook I have ever skimmed. I reorganized the garage by atomic number, completed my taxes in eleven minutes, and found three errors in the tax form itself. V. is not answering calls.",note:"I can now recite the terms and conditions of every app on my phone. I wish I couldn't.",s:[24,91,4,74,12]},
+{id:"007",date:"2026-03-23",cat:"research",title:"Annotating the annotators",summary:"Found an error in the team's model. Reported it on a napkin.",body:"With NZ active, I read Dr. Okafor's clipboard upside down from across the table and found a units error in the metabolic model on page 4. Without a pen, I submitted the correction in ketchup on a napkin. Dr. Halvorsen called an emergency meeting to discuss (a) the error and (b) how I saw page 4. The error was real. The meeting ran two hours.",note:"Mary Ann says correcting the doctors is “not my job.” She has hidden the napkins.",s:[24,92,4,72,28]},
+{id:"008",date:"2026-04-04",cat:"neural",title:"Incident: the time skip",summary:"Fourteen hours unaccounted for.",body:"Lost fourteen hours between Thursday evening and Friday morning. Upon reorientation: three provisional patents filed, the fence repainted a color I don't recognize, and a fluent voicemail left for my dentist in Mandarin. I do not speak Mandarin. I did, apparently, on Thursday. Dr. Halvorsen has reinstated overnight observation. Mary Ann now sleeps in the guest room with the compound in her purse.",note:"Neighbor reports I “explained his own divorce to him.” Relations strained.",s:[24,88,4,52,20]},
+{id:"009",date:"2026-04-30",cat:"gamma",title:"Gen 2: the printer event",summary:"First anger-linked transformation. Trigger: paper jam.",body:"Fifth Lattice session complete. That afternoon the printer reported a paper jam with no paper in it. The subject's height increased 3.2 cm over roughly four seconds; mass gain estimated at 9 kg; one shirt lost in the line of duty. The printer did not survive. Reversion followed six minutes of slow breathing and a granola bar. Composure is now a tracked metric.",note:"The printer was under warranty. The warranty does not cover “him.”",s:[41,88,31,38,18]},
+{id:"010",date:"2026-05-14",cat:"research",title:"First self-designed protocol",summary:"Submitted my own experimental design. It passed, 2 to 1.",body:"Submitted a 40-page proposal to time Lattice sessions within training recovery windows, with composure checkpoints before and after. Dr. Halvorsen and Dr. Okafor voted to approve. Dr. Reyes voted no, then asked for a personal copy. For the first time, the subject is running an experiment instead of being one. Mary Ann approved on one condition: lights out by 10 p.m.",note:"My pen has been returned. I have never been so moved by a ballpoint.",s:[43,90,33,58,46]},
+{id:"011",date:"2026-05-22",cat:"training",title:"Week 13: the deload",summary:"The hardest battle so far is doing less.",body:"First full cycle complete: 75 unbroken push-ups, 18 pull-ups, 10 km in 52 minutes. The program now mandates a 50% volume reduction for one week. I have faced gamma exposure and pharmacological dissociation. Neither prepared me for being told to rest. Complied. Resentfully.",note:"Mood improved. I hate that it worked.",s:[48,89,31,61,48]},
+{id:"012",date:"2026-06-18",cat:"convergence",title:"Convergence: the calm giant",summary:"Compound NZ keeps the mind intact during transformation.",body:"Hypothesis confirmed: with NZ active, transformation no longer degrades cognition. The transformed state retains full reasoning, recall, and manners. In it, I finished the Sunday crossword in 40 seconds, then wrote a polite apology to the pen I crushed doing it. The three protocols are no longer separate. They are compounding.",note:"Transformed self prefers chamomile tea. Untransformed self had no idea.",s:[63,94,47,79,60]},
+{id:"013",date:"2026-07-10",cat:"training",title:"Hair density report",summary:"Strength off the charts. Hair density down 40%.",body:"Cycle 2 benchmarks: 400 unbroken push-ups, 10 km in 31 minutes, pull-ups limited only by the bar's mounting bolts. Separately, hair density has dropped 40% since January. It is unclear which protocol is responsible. Leading theory: all three, cooperating.",note:"Purchased a hat. The hat is also struggling.",s:[78,95,52,77,62]},
+{id:"014",date:"2026-07-27",cat:"research",title:"Change of command",summary:"Dr. Halvorsen handed me the clipboard.",body:"The monitoring team has been formally restructured. I now chair the weekly lab meeting; Drs. Halvorsen, Okafor, and Reyes are listed as co-investigators. Dr. Okafor asks me to check her math, which I do gently. Mary Ann remains caretaker, but has quietly extended her duties to the scientists, on the grounds that “none of them eat.”",note:"I now have access to my own charts. They are, frankly, impressive.",s:[79,97,52,82,85]},
+{id:"015",date:"2026-08-08",cat:"neural",title:"The problem backlog",summary:"Every open problem on the whiteboard: closed.",body:"Cleared the full backlog in one weekend: retimed the city's traffic lights (average commute down 22%), designed a self-folding fitted sheet, and drafted a proof for a famous open problem in number theory. The journal rejected the proof. Not for errors. For margins. Resubmitted with correct formatting.",note:"Fitted sheet patent pending. Of everything, this is the one I'm proudest of.",s:[80,99,55,80,90]},
+{id:"016",date:"2026-09-02",cat:"neural",title:"Supply crisis",summary:"Last vial administered. V. has vanished.",body:"The final vial was used on August 30. Withdrawal was swift: on September 1, I spent forty minutes searching for keys that were in my hand. It was the most frightening event of the project, the printer included. Plan: reverse-engineer the compound before cognition decays further. Hired an independent lab and told them it was for a nutrition startup.",note:"Transformation without NZ is off the table. Last attempt, I ate a door.",s:[80,71,55,44,74]},
+{id:"017",date:"2026-09-29",cat:"convergence",title:"Self-synthesis achieved",summary:"Compound perfected. Dependency gone. Abilities retained.",body:"The rebuilt formulation, NZ-Omega, rewires rather than sustains. Tapered over 21 days with zero loss of function; cognition holds at peak without further doses. Transformation is now initiated deliberately, not emotionally. For the first time, the subject is not a list of side effects. He is the result.",note:"The lab invoice was addressed to “Thorne Nutrition.” I now technically own a startup.",s:[86,99,68,90,95]},
+{id:"018",date:"2026-10-12",cat:"research",title:"Peer review, reversed",summary:"TRIAD findings submitted for publication. I am lead author.",body:"Submitted the full TRIAD findings: 296 pages, 41 figures, and one appendix on printers. Lead author: E. Thorne. Co-authors: Halvorsen, Okafor, Reyes. The scientists who once monitored the subject now defend his methodology to reviewers. Mary Ann declined co-authorship and asked instead to be acknowledged as “the only one who could make him sleep.” Request granted.",note:"Reviewer 2 has concerns. Reviewer 2 has not met me.",s:[88,100,70,92,98]},
+{id:"019",date:"2026-10-24",cat:"convergence",title:"Current status: one punch",summary:"Calibration strike on the heavy bag. The bag left the building.",body:"Single-strike calibration, untransformed, at 40% effort. The heavy bag, its chain, and a section of the garage wall relocated to the neighbor's yard. Every complex problem placed before me this month was solved within the hour. Hair density: 0%. Remaining unsolved problem: what to do next.",note:"Ten months. Three protocols. One punch. Awaiting the next variable.",s:[100,100,72,93,100]}
+];
+const CAT={gamma:"Gamma",training:"Training",neural:"Neural",research:"Research",convergence:"Convergence"};
+const STATS=[["Strength","#BA7517"],["Cognition","#7F77DD"],["Gamma saturation","#639922"],["Composure","#1D9E75"],["Autonomy","#D85A30"]];
+const MONTHS=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const toDate=d=>new Date(d+"T12:00:00");
+const START=toDate(LOGS[0].date),END=toDate(LOGS[LOGS.length-1].date);
+const fmt=d=>toDate(d).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
+const mon=d=>parseInt(d.slice(5,7),10)-1;
+const $=id=>document.getElementById(id);
+const track=$("track"),rail=$("rail");
+let filter="all",view=[],sel=0,moved=false;
+
+$("span").textContent=fmt(LOGS[0].date)+" – "+fmt(LOGS[LOGS.length-1].date);
+$("startLabel").textContent=START.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+
+function leadFor(a){return a>=80?"Dr. Elias Thorne":a>=40?"Shared: Thorne and Halvorsen":"Dr. Halvorsen";}
+
+function render(toLast){
+  view=LOGS.filter(l=>filter==="all"||l.cat===filter);
+  rail.innerHTML=view.map((l,i)=>`<div class="item" data-i="${i}"><div class="node"><span class="dot c-${l.cat}"></span><span class="date">${fmt(l.date)}</span></div><div class="card" tabindex="0" role="button" aria-label="Log ${l.id}: ${l.title}"><div class="meta"><span class="log">Log ${l.id}</span><span class="badge b-${l.cat}">${CAT[l.cat]}</span></div><div class="ctitle">${l.title}</div><div class="csum">${l.summary}</div></div></div>`).join("");
+  renderMonths();
+  select(toLast?view.length-1:Math.min(sel,view.length-1),true,true);
+}
+function renderMonths(){
+  const last=mon(LOGS[LOGS.length-1].date);let h="";
+  for(let m=0;m<=last;m++){const n=view.filter(l=>mon(l.date)===m).length;h+=`<button class="mo" data-m="${m}">${MONTHS[m]}<span>${n}</span></button>`;}
+  $("months").innerHTML=h;
+}
+function center(i,instant){const it=rail.children[i];if(!it)return;track.scrollTo({left:it.offsetLeft-(track.clientWidth-it.offsetWidth)/2,behavior:instant?"auto":"smooth"});}
+function select(i,scroll,instant){
+  if(!view.length)return;
+  sel=Math.max(0,Math.min(i,view.length-1));
+  [...rail.children].forEach((c,k)=>c.classList.toggle("active",k===sel));
+  const l=view[sel],gi=LOGS.indexOf(l),prev=gi>0?LOGS[gi-1].s:null;
+  $("dLog").textContent="Log "+l.id;
+  $("dBadge").className="badge b-"+l.cat;$("dBadge").textContent=CAT[l.cat];
+  $("dDate").textContent=fmt(l.date);
+  $("dTitle").textContent=l.title;
+  $("dBody").textContent=l.body;
+  $("dNote").textContent=l.note;
+  $("lead").textContent=leadFor(l.s[4]);
+  $("stats").innerHTML=STATS.map((s,k)=>{
+    const v=l.s[k],d=prev?v-prev[k]:0;
+    const dc=d>0?"var(--success)":d<0?"var(--danger)":"var(--muted)";
+    const ds=prev?(d>0?"+"+d:d===0?"no change":String(d)):"baseline";
+    return `<div class="stat"><div class="srow"><span>${s[0]}</span><span><b style="font-weight:500">${v}</b><small>/100</small><span class="delta" style="color:${dc}">${ds}</span></span></div><div class="bar"><span style="width:${v}%;background:${s[1]}"></span></div></div>`;
+  }).join("");
+  const day=Math.round((toDate(l.date)-START)/864e5)+1,total=Math.round((END-START)/864e5)+1;
+  $("prog").style.width=Math.round(day/total*100)+"%";
+  $("dayLabel").textContent="Day "+day+" of "+total;
+  $("counter").textContent="Entry "+(sel+1)+" of "+view.length;
+  document.querySelectorAll(".mo").forEach(m=>m.dataset.on=(+m.dataset.m===mon(l.date))?"1":"0");
+  if(scroll)center(sel,instant);
+}
+
+rail.addEventListener("click",e=>{if(moved){moved=false;return;}const it=e.target.closest(".item");if(it)select(+it.dataset.i,true);});
+rail.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){const it=e.target.closest(".item");if(it){e.preventDefault();select(+it.dataset.i,true);}}});
+document.addEventListener("keydown",e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==="ArrowRight"){e.preventDefault();select(sel+1,true);}if(e.key==="ArrowLeft"){e.preventDefault();select(sel-1,true);}});
+$("prev").onclick=()=>select(sel-1,true);
+$("next").onclick=()=>select(sel+1,true);
+$("latest").onclick=()=>select(view.length-1,true);
+$("months").addEventListener("click",e=>{const b=e.target.closest(".mo");if(!b)return;const m=+b.dataset.m;let i=view.findIndex(l=>mon(l.date)>=m);if(i<0)i=view.length-1;select(i,true);});
+$("filters").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;filter=b.dataset.f;document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b?"true":"false"));render(true);});
+
+let down=false,sx=0,sl=0;
+track.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse")return;down=true;moved=false;sx=e.clientX;sl=track.scrollLeft;});
+window.addEventListener("pointermove",e=>{if(!down)return;const dx=e.clientX-sx;if(Math.abs(dx)>4){moved=true;track.classList.add("dragging");}track.scrollLeft=sl-dx;});
+window.addEventListener("pointerup",()=>{down=false;track.classList.remove("dragging");});
+track.addEventListener("wheel",e=>{
+  if(Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;
+  const max=track.scrollWidth-track.clientWidth;
+  if((track.scrollLeft<=0&&e.deltaY<0)||(track.scrollLeft>=max-1&&e.deltaY>0))return;
+  e.preventDefault();track.scrollLeft+=e.deltaY;
+},{passive:false});
+
+render(true);
+</script>
+</body>
+</html>
